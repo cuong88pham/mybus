@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bus_trip_id: 1
+  code: MyString
+  started_at: 2014-04-08 01:29:28
+  bus_type_id: 1
+  bus_id: 1
+  can_book_before: 1
+  status: 1
+
+two:
+  bus_trip_id: 1
+  code: MyString
+  started_at: 2014-04-08 01:29:28
+  bus_type_id: 1
+  bus_id: 1
+  can_book_before: 1
+  status: 1

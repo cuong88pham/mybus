@@ -1,0 +1,6 @@
+      invoke  active_record
+      create    db/migrate/20140407182222_create_brands.rb
+      create    app/models/brand.rb
+      invoke    test_unit
+      create      test/models/brand_test.rb
+      create      test/fixtures/brands.yml

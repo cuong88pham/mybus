@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bus_movement_id: 1
+  status: 1
+  price: 1.5
+  discount: 1.5
+  ticket_type_id: 1
+
+two:
+  bus_movement_id: 1
+  status: 1
+  price: 1.5
+  discount: 1.5
+  ticket_type_id: 1

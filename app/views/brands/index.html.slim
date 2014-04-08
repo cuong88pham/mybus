@@ -1,0 +1,33 @@
+= render 'header', :title => ' Danh sách nhà xe'
+.row-fluid
+  .span12
+    .row-fluid
+      .span12
+        table#brands.table.table-striped.table-bordered.table-hover
+          thead
+            tr
+              th.center.span1
+                label
+                  input.ace type="checkbox" /
+                  span.lbl
+              th.span2 Mã số
+              th Tên nhà xe
+              th.span2.center Cập nhật
+              th.span1.center Xóa
+          tbody
+            - @brands.each do |brand|
+              tr
+                td
+                  label
+                    input.ace type="checkbox" /
+                    span.lbl
+                td
+                  =brand.code
+                td
+                  =brand.name
+                td
+                  = link_to edit_admin_brands_path do
+                    i.icon-edit
+                td
+                  = link_to edit_admin_brands_path do
+                    i.icon-remove

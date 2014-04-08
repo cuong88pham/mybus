@@ -1,0 +1,41 @@
+.main-container.container-fluid
+  .main-content
+    .row-fluid
+      .span12
+        .login-container
+          .row-fluid
+            .center
+              h1
+                i.icon-truck.green
+                span.red MyBus
+                br/
+                span.white  Booking Management
+              h4.blue
+                ="&copy; #{current_tenant.name}"
+          .space-6
+          .row-fluid
+            .position-relative
+              #login-box.login-box.visible.widget-box.no-border
+                .widget-body
+                  .widget-main
+                    h4.header.blue.lighter.bigger
+                      i.icon-coffee.green
+                      | Please Enter Your Information
+                    .space-6
+                    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+                      fieldset
+                        label
+                          span.block.input-icon.input-icon-right
+                            = f.text_field :email, :class => 'span12'
+                            i.icon-user
+                        label
+                          span.block.input-icon.input-icon-right
+                            = f.password_field :password, :class => 'span12'
+                            i.icon-lock
+                        .space
+                        .clearfix
+
+                          = f.submit "Sign in", :class => 'btn btn-lg btn-primary btn-block'
+                            i.icon-key
+
+                        .space-4

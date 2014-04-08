@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  code: MyString
+  status: MyString
+  is_valid: false
+  seats: 1
+
+two:
+  name: MyString
+  code: MyString
+  status: MyString
+  is_valid: false
+  seats: 1
