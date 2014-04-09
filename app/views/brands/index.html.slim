@@ -26,7 +26,7 @@
                 td
                   =brand.name
                 td.center
-                  = link_to brands_path(brand) do
+                  = link_to brand_path(brand) do
                     i.icon-edit
                 td.center
                   = link_to brand_path(brand),:method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Bạn có muốn xóa nhà xe này không?')) } do

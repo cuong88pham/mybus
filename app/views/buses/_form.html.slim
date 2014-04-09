@@ -1,0 +1,24 @@
+= simple_form_for resource,html: { class: 'form-horizontal' } do |f|
+  .control-group
+    label.control-label Tên xe:
+    .controls
+      = f.text_field :name
+
+  .control-group
+    label.control-label Biễn số xe:
+    .controls
+      = f.text_field :code
+
+  .control-group
+    label.control-label Số chỗ ngồi:
+    .controls
+      = f.number_field :seats
+
+  .form-actions
+      =button_tag(type: 'submit', :class => 'btn btn-small btn-info') do
+        i.icon-ok.bigger-110
+        | Lưu xe
+      | &nbsp &nbsp &nbsp
+      =button_tag(type: 'reset', :class => 'btn btn-small btn-info') do
+        i.icon-undo.bigger-110
+        | Nhập lại

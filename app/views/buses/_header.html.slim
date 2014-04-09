@@ -1,0 +1,13 @@
+.page-header.position-relative
+  .row-fluid
+    .span10
+      h1
+        - if title
+          = title
+    .span2
+      .pull-right
+        =link_to new_bus_path(), :class => 'btn btn-small btn-primary' do
+          i.icon-plus
+          | Thêm xe
+
+
