@@ -8,6 +8,9 @@ class BusTrip < ActiveRecord::Base
   has_many :bus_movements
   before_save :set_bus_trip_name
 
+  # Get active brand
+  scope :actived, where(is_valid: true)
+
   private
   def set_bus_trip_name
     self.name ||= self.station_from.try(:name) + ' - ' + self.station_to.try(:name)

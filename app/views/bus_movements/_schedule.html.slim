@@ -1,0 +1,19 @@
+div class="span4"
+  div class="widget-box"
+    div class="widget-header"
+      h4 Lịch chạy
+
+      div class="widget-toolbar"
+        a href="#" data-action="collapse"
+          i class="icon-chevron-up"
+        a href="#" data-action="close"
+          i class="icon-remove"
+
+    div class="widget-body"
+      div class="widget-main"
+        = f.simple_fields_for :driver_movements do |f1|
+          = f1.input :driver_id, collection: @drivers,:label => 'Tài xế và tiếp viên:',input_html:{:class => 'span3 chosen-select', multiple:''}
+        = f.input :code, :label => 'Mã số', input_html:{:class => 'span12 '}
+        = f.input :can_book_before, :label => 'Thời hạn đặt vé', input_html:{:class => 'span12 '}
+        = f.input :started_at,as: 'string', :label => 'Khởi hành vào ngày:',input_html:{:class => 'span12 date-picker'}
+        = f.input :bus_id, :label => 'Xe:',:collection => @buses,input_html:{:class => 'span3 chosen-select'}

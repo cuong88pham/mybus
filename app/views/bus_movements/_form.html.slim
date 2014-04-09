@@ -1,9 +1,22 @@
-= form_for @bus_movement do |f|
-  - if @bus_movement.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@bus_movement.errors.count, "error")} prohibited this bus_movement from being saved:"
-      ul
-        - @bus_movement.errors.full_messages.each do |message|
-          li = message
-
-  .actions = f.submit 'Save'
+= simple_form_for resource,html: { class: 'form-horizontal' } do |f|
+  .row-fluid
+    .span12
+      .control-group
+        label.control-label Chuyến xe:
+        .controls
+          = f.select :bus_trip_id, @bus_trips.map{|bus_trip| [bus_trip.try(:name), bus_trip.try(:id)]},{},:class => 'chosen-select'
+  .row-fluid
+    - (0..2).each do |t|
+      = render 'schedule',:f => f
+  .row-fluid
+    - (3..5).each do |t|
+      = render 'schedule',:f => f
+  .row-fluid
+    .form-actions
+        =button_tag(type: 'submit', :class => 'btn btn-small btn-info') do
+          i.icon-ok.bigger-110
+          | Lưu nhà xe
+        | &nbsp &nbsp &nbsp
+        =button_tag(type: 'reset', :class => 'btn btn-small btn-info') do
+          i.icon-undo.bigger-110
+          | Nhập lại
