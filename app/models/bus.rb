@@ -6,4 +6,9 @@ class Bus < ActiveRecord::Base
   validates :code, uniqueness: true
   validates :seats, uniqueness: true
 
+  TYPES = {
+    'Có giường nằm' => 1,
+    'Xe bình thường' => 0
+  }
+
 end

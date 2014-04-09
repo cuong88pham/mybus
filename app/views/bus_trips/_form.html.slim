@@ -1,0 +1,44 @@
+= simple_form_for resource,html: { class: 'form-horizontal' } do |f|
+
+  .control-group
+    label.control-label Mã số chuyến:
+    .controls
+      = f.text_field :code
+
+  .control-group
+    label.control-label Nhà xe:
+    .controls
+      = f.select :brand_id, @brands.map{|brand| [brand.name, brand.id]},{},:class => 'chosen-select'
+
+  .control-group
+    label.control-label Từ bến xe:
+    .controls
+      = f.select :from_station_id, @stations.map{|station| [station.name, station.id]},{},:class => 'chosen-select'
+  .control-group
+    label.control-label Đến bến xe:
+    .controls
+      = f.select :to_station_id, @stations.map{|station| [station.name, station.id]},{},:class => 'chosen-select'
+
+  .control-group
+    label.control-label Khởi hàng lúc:
+    .controls
+      = f.text_field :started_at
+
+  .control-group
+    label.control-label Thời gian dự kiến:
+    .controls
+      = f.number_field :duration
+
+  .control-group
+    label.control-label Thông tin:
+    .controls
+      = f.text_area :desc, :class => 'form-control'
+
+  .form-actions
+      =button_tag(type: 'submit', :class => 'btn btn-small btn-info') do
+        i.icon-ok.bigger-110
+        | Lưu nhà xe
+      | &nbsp &nbsp &nbsp
+      =button_tag(type: 'reset', :class => 'btn btn-small btn-info') do
+        i.icon-undo.bigger-110
+        | Nhập lại

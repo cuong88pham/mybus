@@ -4,4 +4,6 @@ class Brand < ActiveRecord::Base
   validates :name, presence: true
   validates :code, uniqueness: true
 
+  # Get active brand
+  scope :actived, where(is_valid: true)
 end
