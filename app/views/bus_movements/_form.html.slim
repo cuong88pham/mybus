@@ -1,0 +1,9 @@
+= form_for @bus_movement do |f|
+  - if @bus_movement.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@bus_movement.errors.count, "error")} prohibited this bus_movement from being saved:"
+      ul
+        - @bus_movement.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit 'Save'

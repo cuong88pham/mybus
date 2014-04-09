@@ -1,0 +1,19 @@
+h1 Listing bus_movements
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @bus_movements.each do |bus_movement|
+      tr
+        td = link_to 'Show', bus_movement
+        td = link_to 'Edit', edit_bus_movement_path(bus_movement)
+        td = link_to 'Destroy', bus_movement, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Bus movement', new_bus_movement_path

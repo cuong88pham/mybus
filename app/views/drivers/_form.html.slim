@@ -1,0 +1,34 @@
+= simple_form_for resource,html: { class: 'form-horizontal' } do |f|
+  .control-group
+    label.control-label Họ và tên:
+    .controls
+      = f.text_field :name
+
+  .control-group
+    label.control-label Mã số:
+    .controls
+      = f.text_field :code
+
+  .control-group
+    label.control-label Chức vụ:
+    .controls
+      = f.select :driver_type, Driver::TYPES.invert.map{|type| [type[1], type[0]]},{},:class => 'chosen-select'
+
+  .control-group
+    label.control-label Địa chỉ:
+    .controls
+      = f.text_field :address
+
+  .control-group
+    label.control-label Điện thoại:
+    .controls
+      = f.text_field :phone
+
+  .form-actions
+      =button_tag(type: 'submit', :class => 'btn btn-small btn-info') do
+        i.icon-ok.bigger-110
+        | Lưu tài xế
+      | &nbsp &nbsp &nbsp
+      =button_tag(type: 'reset', :class => 'btn btn-small btn-info') do
+        i.icon-undo.bigger-110
+        | Nhập lại

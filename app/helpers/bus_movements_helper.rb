@@ -1,0 +1,2 @@
+module BusMovementsHelper
+end

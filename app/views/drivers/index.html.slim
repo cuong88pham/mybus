@@ -1,4 +1,4 @@
-= render 'header', :title => ' Danh sách nhà xe'
+= render 'header', :title => ' Danh sách tài xế và phụ xe'
 .row-fluid
   .span12
     .row-fluid
@@ -11,23 +11,26 @@
                   input.ace type="checkbox" /
                   span.lbl
               th.span2 Mã số
-              th Tên nhà xe
+              th Tên tài xế
+              th Chức vụ
               th.span2.center Cập nhật
               th.span1.center Xóa
           tbody
-            - @brands.each do |brand|
+            - @drivers.each do |driver|
               tr
-                td.center.span1
+                td
                   label
                     input.ace type="checkbox" /
                     span.lbl
                 td
-                  =brand.code
+                  =driver.code
                 td
-                  =brand.name
+                  =driver.name
+                td
+                  =Driver::TYPES.invert[driver.driver_type]
                 td.center
-                  = link_to brand_path(brand) do
+                  = link_to driver_path(driver) do
                     i.icon-edit
                 td.center
-                  = link_to brand_path(brand),:method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Bạn có muốn xóa nhà xe này không?')) } do
+                  = link_to driver_path(driver),:method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Bạn có muốn xóa tài xế xe này không?')) } do
                     i.icon-remove
