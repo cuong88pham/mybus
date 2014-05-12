@@ -18,10 +18,12 @@ def truncate_db_table(table)
   end
 end
 
+truncate_db_table('tenants')
+
 Tenant.create(domain: "mailinh.mybus.dev", schema:"mailinh")
 Tenant.create(domain: "phuongtrang.mybus.dev", schema:"phuongtrang")
-
-schemas = ["mailinh","phuongtrang"]
+Tenant.create(domain: "admin.mybus.dev", schema:"")
+schemas = ["mailinh","phuongtrang","admin"]
 
 # Create domain
 schemas.each do |schema|
@@ -30,15 +32,14 @@ end
 
 # schemas << "public"
 
-schemas.each do |schema|
-  Storey.switch schema do
-    user = User.where(username: 'admin').first_or_initialize
+# schemas.each do |schema|
+#   Storey.switch schema do
+#     user = User.where(username: 'admin').first_or_initialize
 
-    if !user.persisted?
-      user.email    = 'admin@mybus.vn'
-      user.password = '12344321'
-      user.save
-    end
-
-  end
-end
+#     if !user.persisted?
+#       user.email    = 'admin@mybus.vn'
+#       user.password = '12344321'
+#       user.save
+#     end
+#   end
+# end

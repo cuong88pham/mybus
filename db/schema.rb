@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409184420) do
+ActiveRecord::Schema.define(version: 20140512212559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -76,6 +77,14 @@ ActiveRecord::Schema.define(version: 20140409184420) do
     t.integer  "current_location"
   end
 
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.boolean  "status",     default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "customers", force: true do |t|
     t.integer  "tenant_id"
     t.string   "fullname"
@@ -104,6 +113,22 @@ ActiveRecord::Schema.define(version: 20140409184420) do
     t.string   "phone"
     t.integer  "driver_type"
     t.boolean  "is_valid",    default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.integer  "category_id"
+    t.string   "alias"
+    t.text     "post_content"
+    t.string   "post_desc"
+    t.string   "meta_desc"
+    t.string   "meta_key"
+    t.boolean  "show_in_home_page", default: false
+    t.boolean  "show_in_main_nav",  default: false
+    t.boolean  "show_in_footer",    default: false
+    t.boolean  "status",            default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

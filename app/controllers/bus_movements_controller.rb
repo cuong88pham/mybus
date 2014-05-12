@@ -4,7 +4,7 @@ class BusMovementsController < InheritedResources::Base
   private
 
   def prepare_data
-    @bus_trips = BusTrip.actived
+    @bus_trips = BusTrip.all
     @buses     = Bus.all
     @drivers   = Driver.all
   end

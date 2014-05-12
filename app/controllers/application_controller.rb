@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_tenant
-  before_action :authenticate_user!
+  before_action :authenticate!
   before_action :set_tenant,:set_locate
 
   # Static function set permit strong params
@@ -18,22 +18,32 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate!
+    if request.subdomain.present? && Apartment::Database.current_database != ""
+      authenticate_user!
+      if controller_name == 'home'
+        redirect_to dashboards_path
+      end
+    else
+      return
+    end
+  end
+
   def current_tenant
     Rails.application.config.action_mailer.default_url_options = request.host
-    @current_tenant ||= Tenant.where(domain: request.host).first
+    @current_tenant ||= Tenant.where(schema: request.subdomain).first
   end
 
   def set_tenant
     schema = Apartment.default_schema
-
-    if current_tenant
-      schema = session[:schema] = current_tenant.schema unless current_tenant.schema.blank?
+    if current_tenant.present?
+      schema = session[:schema] = current_tenant.schema
       session[:tenant_id] = current_tenant.id
     else
       session[:schema] = schema
     end
 
-    set_current_user if authenticate_user!
+    set_current_user if authenticate!
   end
 
   def set_locate
@@ -42,12 +52,6 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     # User.current = current_user
-  end
-
-  def wrap_in_transaction
-    ActiveRecord::Base.transaction do
-      yield
-    end
   end
 
 end

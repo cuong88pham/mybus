@@ -1,0 +1,37 @@
+= render 'header', :title => ' Danh sách nhà xe'
+.row-fluid
+  .span12
+    .row-fluid
+      .span12
+        table#brands.table.table-striped.table-bordered.table-hover
+          thead
+            tr
+              th.center.span1
+                label
+                  input.ace type="checkbox" /
+                  span.lbl
+              th Tên nhà xe
+              th Người liên hệ
+              th Số điện thoại
+              th Email
+              th Đường dẫn truy cập
+              th.span2.center Cập nhật
+              th.span1.center Xóa
+          tbody
+            - @tenants.each do |tenant|
+              tr
+                td.center.span1
+                  label
+                    input.ace type="checkbox" /
+                    span.lbl
+                td= tenant.name
+                td= tenant.contact_person
+                td= tenant.phone
+                td= tenant.email
+                td= tenant.domain
+                td.center
+                  = link_to tenant_path(tenant) do
+                    i.icon-edit
+                td.center
+                  = link_to tenant_path(tenant),:method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Bạn có muốn xóa nhà xe này không?')) } do
+                    i.icon-remove

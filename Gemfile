@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-
+ruby '2.1.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+gem 'rails', '4.1.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -18,9 +18,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'slim-rails'
 
 gem 'cancancan'
-
-gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 
 gem 'inherited_resources'
 gem 'awesome_nested_set'

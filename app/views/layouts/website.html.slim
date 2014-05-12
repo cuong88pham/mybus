@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title
+      = "MyBus"
+    link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"
+    link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+    link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" type="text/css"
+    = stylesheet_link_tag "website", :media => "all"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,vietnamese", media: nil
+
+    = csrf_meta_tags
+  body
+    .main-container.container
+      .row
+        .span12
+          = render 'layouts/website_header'
+    .main-conainer.container-fluid.homepage_slideshow
+      .row-fluid
+        .span12
+          - if controller_name == 'home' && action_name == 'index'
+            = render 'layouts/homepage_slideshow'
+            .container
+              = render 'layouts/search_form'
+    .main-container.container
+      .row
+        .span12
+          #main-content
+            = yield
+    .main-conainer.container-fluid.homepage_slideshow.footer
+      = render 'layouts/website_footer'
+    a#btn-scroll-up.btn-scroll-up.btn.btn-small.btn-inverse href="#"
+      i.icon-double-angle-up.icon-only.bigger-110
+
+    script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"
+    = javascript_include_tag "website", "data-turbolinks-track" => true
+

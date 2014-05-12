@@ -1,5 +1,14 @@
 = simple_form_for resource,html: { class: 'form-horizontal' } do |f|
   .control-group
+      label.control-label Nhà xe:
+      .controls
+        = f.select :tenant_id, @tenants.map{|tenant| [tenant.name, tenant.id]},{},:class => 'chosen-select'
+  = f.simple_fields_for :driver_movements do |f1|
+    .control-group
+      label.control-label Tài xế và tiếp viên:
+      .controls
+        = f1.select :driver_id, @drivers.map{|driver| [driver.name, driver.id]},{},:class => 'chosen-select', multiple: ''
+  .control-group
     label.control-label Tên xe:
     .controls
       = f.text_field :name
@@ -18,7 +27,6 @@
     label.control-label Có giường nằm:
     .controls
       = f.select :has_bed, Bus::TYPES.invert.map{|type| [type[1], type[0]]},{},:class => 'chosen-select'
-
   .form-actions
       =button_tag(type: 'submit', :class => 'btn btn-small btn-info') do
         i.icon-ok.bigger-110

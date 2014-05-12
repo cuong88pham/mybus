@@ -1,8 +1,16 @@
 Mybus::Application.routes.draw do
   devise_for :users
-  root :to => "dashboards#index"
+
+
+  # namespace 'website' do
+  #   root :to => 'home#index'
+  # end
+
+  root :to => 'website/home#index'
+  get "dashboards",       to: "dashboards#index"
   resources :buses
   resources :brands
+  resources :tenants
   resources :stations
   resources :drivers
   resources :customers
@@ -12,4 +20,5 @@ Mybus::Application.routes.draw do
   resources :bus_movements
   resources :services
   resources :bus_services
+
 end

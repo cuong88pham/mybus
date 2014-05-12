@@ -1,0 +1,33 @@
+= simple_form_for resource,html: { class: 'form-horizontal' } do |f|
+  .control-group
+    label.control-label Tên nhà xe:
+    .controls
+      = f.text_field :name
+  .control-group
+    label.control-label Domain:
+    .controls
+      = f.text_field :domain
+  .control-group
+    label.control-label Email:
+    .controls
+      = f.text_field :email
+  .control-group
+    label.control-label Địa chỉ:
+    .controls
+      = f.text_field :address
+  .control-group
+    label.control-label Số điện thoại:
+    .controls
+      = f.text_field :phone
+  .control-group
+    label.control-label Người liên lạc:
+    .controls
+      = f.text_field :contact_person
+  .form-actions
+      =button_tag(type: 'submit', :class => 'btn btn-small btn-info') do
+        i.icon-ok.bigger-110
+        | Lưu nhà xe
+      | &nbsp &nbsp &nbsp
+      =button_tag(type: 'reset', :class => 'btn btn-small btn-info') do
+        i.icon-undo.bigger-110
+        | Nhập lại

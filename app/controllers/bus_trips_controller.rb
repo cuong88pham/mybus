@@ -5,8 +5,8 @@ class BusTripsController < InheritedResources::Base
   private
 
   def prepare_data
-    @stations = Station.actived
-    @brands   = Brand.actived
+    @stations = Station.all
+    @brands   = Brand.all
   end
 
   def collection
