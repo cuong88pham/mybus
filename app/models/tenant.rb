@@ -6,6 +6,8 @@ class Tenant < ActiveRecord::Base
   before_create :set_schema
   after_create :create_schema, :set_admin_user
 
+  before_destroy {|tenant| Apartment::Database.drop(tenant.schema) if Storey.schema_exists?(tenant.schema)}
+
   IS_VALID = [
       :yes => true,
       :no  => false

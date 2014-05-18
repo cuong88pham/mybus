@@ -1,0 +1,25 @@
+.search
+  .container
+    = form_tag search_path, :method => 'get', class: 'form-horizontal' do
+      .row
+        .span3
+          .control-group
+            lable.lable-control
+              b Nơi đi:
+            .control
+              = select_tag :from_location,options_from_collection_for_select(@locations, "id", "name"),{include_blank:true, class: 'chosen-select'}
+        .span3
+          .control-group
+            lable.lable-control
+              b Nơi đi:
+            .control
+              = select_tag :to_location,options_from_collection_for_select(@locations, "id", "name"),{include_blank:true, class: 'chosen-select'}
+        .span3
+          .control-group
+            lable.lable-control Ngày đi:
+            .control
+              = text_field_tag :search_from_dt, Date.today.strftime("%d-%m-%Y"), data: {behaviour: "datepicker", 'date-format' => 'dd-mm-yyyy'}
+        .span1
+          .control-group
+            br/
+            = submit_tag "Tìm kiến", :name => nil, class: 'btn btn-small btn-warning'

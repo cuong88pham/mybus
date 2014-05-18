@@ -13,21 +13,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-datepicker.min
+//= require chosen.jquery.min
 //= require website/jquery.easing.1.3
 //= require website/camera.min
 //= require turbolinks
 
 $('document').ready(function(){
-//     $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
-//       $(this).prev().focus();
-//     });
+  $('input[data-behaviour*=datepicker]').datepicker({autoclose:true}).next().on('click', function(){
+    $(this).prev().focus();
+  });
 
 //     $('.time-picker').timepicker();
 
-//     $('.chosen-select').chosen({
-//       allow_single_deselect: true,
-//       no_results_text: 'No results matched',
-
-//     })
+  $('.chosen-select').chosen({
+    allow_single_deselect: true,
+    no_results_text: 'Không tìm thấy kết quả',
+  })
 })
 

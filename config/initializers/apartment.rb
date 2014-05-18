@@ -30,7 +30,7 @@ Apartment.configure do |config|
   # config.append_environment = true
 
   # supply list of database names for migrations to run on
-  config.excluded_models = ["Tenant", "Station", "Bus", "Post", "Category"]
+  config.excluded_models = ["Tenant", "Station", "Bus", "Post", "Category", "Location"]
   config.tenant_names = lambda{ Tenant.pluck(:schema) }
   # config.station_names = lambda{ Station.pluck(:code) }
 end

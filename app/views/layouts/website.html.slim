@@ -22,11 +22,9 @@ html
             = render 'layouts/homepage_slideshow'
             .container
               = render 'layouts/search_form'
-    .main-container.container
-      .row
-        .span12
-          #main-content
-            = yield
+
+    = yield
+
     .main-conainer.container-fluid.homepage_slideshow.footer
       = render 'layouts/website_footer'
     a#btn-scroll-up.btn-scroll-up.btn.btn-small.btn-inverse href="#"

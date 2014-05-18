@@ -7,6 +7,7 @@ Mybus::Application.routes.draw do
   # end
 
   root :to => 'website/home#index'
+  get "search" => 'website/home#search'
   get "dashboards",       to: "dashboards#index"
   resources :buses
   resources :brands
