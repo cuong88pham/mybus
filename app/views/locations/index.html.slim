@@ -1,4 +1,4 @@
-= render 'header', :title => ' Danh sách bến xe'
+= render 'header', :title => ' Danh sách tỉnh thành phố'
 .row-fluid
   .span12
     .row-fluid
@@ -10,27 +10,24 @@
                 label
                   input.ace type="checkbox" /
                   span.lbl
-              th.span2 Mã số
-              th Bến xe
-              th Tỉnh/Thành
+              th.span2 Mã vùng
+              th Tỉnh/Thành Phố
               th.span2.center Cập nhật
               th.span1.center Xóa
           tbody
-            - @stations.each do |station|
+            - @locations.each do |location|
               tr
-                td
+                td.center.span1
                   label
                     input.ace type="checkbox" /
                     span.lbl
                 td
-                  =station.code
+                  =location.code
                 td
-                  =station.name
-                td
-                  =station.location.name
+                  =location.name
                 td.center
-                  = link_to station_path(station) do
+                  = link_to location_path(location) do
                     i.icon-edit
                 td.center
-                  = link_to station_path(station),:method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Bạn có muốn xóa nhà xe này không?')) } do
+                  = link_to location_path(location),:method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Bạn có muốn xóa nhà xe này không?')) } do
                     i.icon-remove

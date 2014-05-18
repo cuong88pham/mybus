@@ -5,6 +5,14 @@
 # Run with 'rake db:seed', assuming you have already created
 # the table.
 # Works for mysql, sqlite, sqlite3
+[["admin.mybus.dev", "admin"]].each do |tenant_info|
+  if (tenant = Tenant.find_by_schema(tenant_info[1]))
+    tenant.update_attribute(:domain, tenant_info[0])
+  else
+    tenant = Tenant.create(domain: tenant_info[0], schema: tenant_info[1])
+    puts "--> Creating Tenant: " + tenant.schema
+  end
+end
 
 vnprovinces = [
   ['076', 'An Giang'],      ['064', 'Bà Rịa - Vũng Tàu'],

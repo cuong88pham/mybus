@@ -1,4 +1,5 @@
 Mybus::Application.routes.draw do
+
   devise_for :users
 
 
@@ -7,7 +8,12 @@ Mybus::Application.routes.draw do
   # end
 
   root :to => 'website/home#index'
+
   get "search" => 'website/home#search'
+  get "post/:id/:alias" => 'website/home#post'
+  get "news" => 'website/home#news'
+  get "contact" => 'website/home#contact'
+
   get "dashboards",       to: "dashboards#index"
   resources :buses
   resources :brands
@@ -21,5 +27,6 @@ Mybus::Application.routes.draw do
   resources :bus_movements
   resources :services
   resources :bus_services
-
+  resources :locations
+  resources :posts
 end

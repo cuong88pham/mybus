@@ -31,6 +31,10 @@ a#menu-toggler.menu-toggler href="#"
         i.icon-signal
         span.menu-text Bến xe
     li
+      = link_to locations_path do
+        i.icon-signal
+        span.menu-text Tỉnh thành phố
+    li
       = link_to buses_path do
         i.icon-truck
         span.menu-text Xe khách
@@ -50,6 +54,10 @@ a#menu-toggler.menu-toggler href="#"
       = link_to bus_movements_path do
         i.icon-user
         span.menu-text Lịch xe chạy
+    li
+      = link_to posts_path do
+        i.icon-user
+        span.menu-text Bài viết
 
   /! /.nav-list
   #sidebar-collapse.sidebar-collapse

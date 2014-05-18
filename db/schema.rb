@@ -11,17 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518083135) do
+ActiveRecord::Schema.define(version: 20140518113908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "brands", force: true do |t|
     t.string   "name"
     t.string   "code"
     t.integer  "tenant_id"
     t.boolean  "is_valid",   default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bus_drivers", force: true do |t|
+    t.integer  "bus_id"
+    t.integer  "driver_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -154,9 +160,10 @@ ActiveRecord::Schema.define(version: 20140518083135) do
     t.string   "name"
     t.string   "code"
     t.string   "photo"
-    t.boolean  "is_valid",   default: true
+    t.boolean  "is_valid",    default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "location_id"
   end
 
   create_table "tenants", force: true do |t|

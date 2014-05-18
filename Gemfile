@@ -30,7 +30,7 @@ gem 'chosen-rails'
 gem 'public_activity'
 
 gem 'simple_form'
-
+gem 'nested_form'
 gem 'bootstrap-datetimepicker-rails'
 gem 'bootstrap-sass'
 
@@ -75,3 +75,5 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+gem 'babosa'

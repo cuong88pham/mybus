@@ -8,6 +8,12 @@
     label.control-label Mã số:
     .controls
       = f.text_field :code
+  - unless @tenants.blank?
+    .control-group
+      label.control-label Nhà xe:
+      .controls
+        = f.select :tenant_id, @tenants.map{|tenant| [tenant.name, tenant.id]},{include_blank: true},:class => 'chosen-select'
+
 
   .control-group
     label.control-label Chức vụ:

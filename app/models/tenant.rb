@@ -6,7 +6,8 @@ class Tenant < ActiveRecord::Base
   before_create :set_schema
   after_create :create_schema, :set_admin_user
 
-  before_destroy {|tenant| Apartment::Database.drop(tenant.schema) if Storey.schema_exists?(tenant.schema)}
+  has_many :drivers
+  has_many :buses
 
   IS_VALID = [
       :yes => true,
@@ -30,7 +31,7 @@ class Tenant < ActiveRecord::Base
   #
   # Author Cuong Pham
   def set_admin_user
-    params = {:schema => self.schema, :email => self.email}
+    params = {:schema => self.schema, :email => 'admin@mybus.vn'}
     self.set_admin(params)
   end
 

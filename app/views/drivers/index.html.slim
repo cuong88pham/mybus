@@ -13,6 +13,7 @@
               th.span2 Mã số
               th Tên tài xế
               th Chức vụ
+              th Nhà xe
               th.span2.center Cập nhật
               th.span1.center Xóa
           tbody
@@ -28,6 +29,8 @@
                   =driver.name
                 td
                   =Driver::TYPES.invert[driver.driver_type]
+                td
+                  =driver.tenant.name
                 td.center
                   = link_to driver_path(driver) do
                     i.icon-edit
