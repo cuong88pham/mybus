@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
         redirect_to dashboards_path
       end
     else
-      redirect_to 'http://www.mybus.vn'
+      redirect_to 'http://www.mybus.vn' if request.subdomain != 'www'
     end
   end
 
