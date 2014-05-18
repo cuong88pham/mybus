@@ -95,3 +95,8 @@ h1.title{
 .search form{
   margin-bottom: 0px !important;
 }
+h1 span.share{
+  font-size: 11px;
+  margin-top: 5px;
+  text-transform:capitalize;
+}

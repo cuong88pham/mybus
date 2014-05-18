@@ -21,7 +21,8 @@ html
           - if controller_name == 'home' && action_name == 'index'
             = render 'layouts/homepage_slideshow'
             .container
-              = render 'layouts/search_form'
+              .search_form
+                = render 'layouts/search_form'
 
     = yield
 

@@ -1,0 +1,12 @@
+.container
+  .row
+    .span4
+      = render 'layouts/search_form'
+    .span8
+      #main-content
+        h1.title
+          = @post.title
+          span.share.pull-right
+            | Chia sẽ
+        .description= @post.post_desc
+        .full_content= @post.post_content

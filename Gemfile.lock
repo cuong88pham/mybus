@@ -39,6 +39,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    babosa (0.3.11)
     bcrypt (3.1.7)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -123,6 +124,7 @@ GEM
     minitest (5.3.3)
     multi_json (1.9.2)
     multi_xml (0.5.5)
+    nested_form (0.3.2)
     orm_adapter (0.5.0)
     passenger (4.0.41)
       daemon_controller (>= 1.2.0)
@@ -245,6 +247,7 @@ DEPENDENCIES
   apartment
   awesome_nested_set
   awesome_print
+  babosa
   better_errors
   bootstrap-datetimepicker-rails
   bootstrap-sass
@@ -258,6 +261,7 @@ DEPENDENCIES
   ionicons-rails
   jbuilder (~> 1.2)
   jquery-rails
+  nested_form
   passenger
   pg
   pry-rails

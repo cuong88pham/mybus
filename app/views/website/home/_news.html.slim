@@ -1,2 +1,8 @@
 h1.title
   | Thông tin về MYBUS.VN
+.container
+  .row
+    - @posts.each do |post|
+      .span3
+        h4=post.title
+        .desc= post.post_desc

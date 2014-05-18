@@ -6,17 +6,27 @@ nav.navbar.navbar-default role="navigation"
           = image_tag("logo.png", size: "100x92", alt: "Trang chủ")
 
     .span9
-       ul.nav.nav-pills.main-nav.pull-right
-        li.active
+      - main_navs = Post.where(show_in_main_nav: true)
+      ul.nav.nav-pills.main-nav.pull-right
+        - if action_name == 'index'
+          - home_active = 'active'
+        - if action_name == 'news'
+          - news_active = 'active'
+        - if action_name == 'contact'
+          - contact_active = 'active'
+        li class="#{home_active}"
           = link_to 'Trang chủ', root_path
-        li
-          a href="#" Giới thiệu
+        - main_navs.each do |nav|
+          - if params[:id].to_i == nav.id
+            - active = 'active'
+          li class="#{active}"
+            = link_to nav.title, "/post/#{nav.id}/#{nav.alias}"
         li
           a href="#"  Kiểm tra vé
-        li
-          a href="#"  Tin tức
-        li
-          a href="#"  Liên hệ
+        li class="#{news_active}"
+          a href="/news"  Tin tức
+        li class="#{contact_active}"
+          a href="/contact"  Liên hệ
 
 .clearfix
 

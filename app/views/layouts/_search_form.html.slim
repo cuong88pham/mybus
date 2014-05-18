@@ -1,36 +1,36 @@
-.search_form
-  .col-sm-6
-    .tabbable
-      ul#myTab.nav.nav-tabs
-        li.active
-          a data-toggle="tab" href="#home"
-            i.green.ace-icon.fa.fa-truck.bigger-120
-            b
-              | Đặt vé xe
-        li
-          a data-toggle="tab" href="#hotel"
-            i.green.ace-icon.fa.fa-home.bigger-120
-            b
-              | Đặt khách sạn
-      .tab-content
-        #home.tab-pane.in.active
-          = form_tag search_path, :method => 'get', class: 'form-horizontal' do
-            .control-group
-              lable.lable-control
-                b Nơi đi:
-              .control
-                = select_tag :from_location,options_from_collection_for_select(@locations, "id", "name"),{include_blank:true, class: 'span11 chosen-select'}
-            .control-group
-              lable.lable-control
-                b Nơi đến:
-              .control
-                = select_tag :to_location,options_from_collection_for_select(@locations, "id", "name"),{include_blank:true, class: ' span11 chosen-select'}
-            .control-group
-              lable.lable-control Ngày đi:
-              .control
-                = text_field_tag :search_from_dt, Date.today.strftime("%d-%m-%Y"), class: 'span12', data: {behaviour: "datepicker", 'date-format' => 'dd-mm-yyyy'}
-            .control-group
-              = submit_tag "Tìm kiến", :name => nil, class: 'btn btn-small btn-success'
 
-        #hotel.tab-pane.in
-          p Đang xây dựng
+.col-sm-6
+  .tabbable
+    ul#myTab.nav.nav-tabs
+      li.active
+        a data-toggle="tab" href="#home"
+          i.green.ace-icon.fa.fa-truck.bigger-120
+          b
+            | Đặt vé xe
+      li
+        a data-toggle="tab" href="#hotel"
+          i.green.ace-icon.fa.fa-home.bigger-120
+          b
+            | Đặt khách sạn
+    .tab-content
+      #home.tab-pane.in.active
+        = form_tag search_path, :method => 'get', class: 'form-horizontal' do
+          .control-group
+            lable.lable-control
+              b Nơi đi:
+            .control
+              = select_tag :from_location,options_from_collection_for_select(@locations, "id", "name"),{include_blank:true, class: 'span11 chosen-select'}
+          .control-group
+            lable.lable-control
+              b Nơi đến:
+            .control
+              = select_tag :to_location,options_from_collection_for_select(@locations, "id", "name"),{include_blank:true, class: ' span11 chosen-select'}
+          .control-group
+            lable.lable-control Ngày đi:
+            .control
+              = text_field_tag :search_from_dt, Date.today.strftime("%d-%m-%Y"), class: 'span12', data: {behaviour: "datepicker", 'date-format' => 'dd-mm-yyyy'}
+          .control-group
+            = submit_tag "Tìm kiến", :name => nil, class: 'btn btn-small btn-success'
+
+      #hotel.tab-pane.in
+        p Đang xây dựng

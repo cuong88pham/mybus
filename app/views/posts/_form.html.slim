@@ -1,0 +1,47 @@
+= simple_form_for resource,html: { class: 'form-horizontal' } do |f|
+  .control-group
+    label.control-label Tiêu đề bài viết:
+    .controls
+      = f.text_field :title
+
+  .control-group
+    label.control-label Mô tả:
+    .controls
+      = f.text_area :post_desc
+
+  .control-group
+    label.control-label Nội dung:
+    .controls
+      = f.text_area :post_content
+
+  .control-group
+    label.control-label Metakey:
+    .controls
+      = f.text_area :meta_key
+
+  .control-group
+    label.control-label Meta Description:
+    .controls
+      = f.text_area :meta_desc
+  .control-group
+    label.control-label Xuất hiện ở trang chủ:
+    .controls
+      = f.check_box :show_in_home_page
+
+  .control-group
+    label.control-label Xuất hiện ở cuối trang:
+    .controls
+      = f.check_box :show_in_footer
+
+  .control-group
+    label.control-label Xuất hiện ở menu:
+    .controls
+      = f.check_box :show_in_main_nav
+  .form-actions
+      =button_tag(type: 'submit', :class => 'btn btn-small btn-info') do
+        i.icon-ok.bigger-110
+        | Lưu nhà xe
+      | &nbsp &nbsp &nbsp
+      =button_tag(type: 'reset', :class => 'btn btn-small btn-info') do
+        i.icon-undo.bigger-110
+        | Nhập lại
