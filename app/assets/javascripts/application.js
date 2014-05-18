@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 $('document').ready(function(){
-    $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+    $('.date-picker').datepicker({autoclose:true}).next().on('click', function(){
       $(this).prev().focus();
     });
 
