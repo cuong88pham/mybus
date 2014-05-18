@@ -2,6 +2,7 @@ class BusesController < InheritedResources::Base
   assign_params :name, :code, :seats, :has_bed, :tenant_id, :bus_drivers_attributes
 
   before_action :prepare_data, only: [:new, :show]
+  before_action :authenticate_user!
 
   def new
     @bus = Bus.new

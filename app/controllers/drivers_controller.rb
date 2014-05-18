@@ -2,7 +2,7 @@ class DriversController < InheritedResources::Base
   assign_params :name, :code, :address, :phone, :driver_type, :tenant_id
 
   before_action :prepare_form, only: ['new', 'show', 'create', 'update']
-
+  before_action :authenticate_user!
 
   private
 
