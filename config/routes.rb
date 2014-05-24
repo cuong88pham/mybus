@@ -13,6 +13,7 @@ Mybus::Application.routes.draw do
   get "post/:id/:alias" => 'website/home#post'
   get "news" => 'website/home#news'
   get "contact" => 'website/home#contact'
+  get "booking/:id" => 'website/home#booking'
 
   get "dashboards",       to: "dashboards#index"
   resources :buses

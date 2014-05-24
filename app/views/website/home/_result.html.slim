@@ -24,3 +24,32 @@ h1.title
   .span2
     select.chosen-select.span2
       option value="" Giá vé
+br/
+.row
+  .span12
+    table.table.table-striped.table-bordered.table-hover
+      thead
+        tr
+          th Hãng xe
+          th Nơi đi
+          th Nơi đến
+          th Giờ đi
+          th Giờ đến
+          th Loại xe
+          th Giá vé
+          th Chỗ trống
+          th Đặt vé
+      tbody
+        - @bus_trips.each do |trip|
+          tr
+            td= trip.tenant.name
+            td= trip.location_from.name
+            td= trip.location_to.name
+            td= trip.started_at
+            td= trip.started_at + trip.duration.hours
+            td= trip.bus.seats
+            td= trip.price_ticket
+            td= trip.bus.seats
+            td
+              = link_to 'Đặt Vé',"/booking/#{trip.id}", class: 'btn btn-small btn-success'
+

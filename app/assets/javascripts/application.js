@@ -13,14 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
+//= require moment
+//= require bootstrap-datetime-picker
 //= require_tree .
 $('document').ready(function(){
-    $('.date-picker').datepicker({autoclose:true}).next().on('click', function(){
-      $(this).prev().focus();
-    });
-
-    $('.time-picker').timepicker();
+    $('.date-picker').datetimepicker();
 
     $('.chosen-select').chosen({
       allow_single_deselect: true,

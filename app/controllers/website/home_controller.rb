@@ -25,6 +25,11 @@ class Website::HomeController < ApplicationController
     @locations = Location.all
     @from_location = @locations.find{|location| location.id == params[:from_location].to_i}
     @to_location = @locations.find{|location| location.id == params[:to_location].to_i}
+    @bus_trips = BusTrip.includes(:location_from, :location_to, :tenant, :bus).where(location_from_id: params[:from_location].to_i, location_to_id: params[:to_location].to_i)
+  end
+
+  def booking
+    @booking = nil
   end
 
 end

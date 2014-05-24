@@ -31,7 +31,6 @@ gem 'public_activity'
 
 gem 'simple_form'
 gem 'nested_form'
-gem 'bootstrap-datetimepicker-rails'
 gem 'bootstrap-sass'
 
 gem 'sendgrid'

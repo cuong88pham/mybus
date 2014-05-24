@@ -8,16 +8,24 @@
   .control-group
     label.control-label Nhà xe:
     .controls
-      = f.select :brand_id, @brands.map{|brand| [brand.name, brand.id]},{},:class => 'chosen-select'
+      = f.select :tenant_id, @brands.map{|brand| [brand.name, brand.id]},{},:class => 'chosen-select'
+  .control-group
+    label.control-label Từ:
+    .controls
+      = f.select :location_from_id, Location.all.map{|local| [local.name, local.id]},{include_blank: true},:class => 'chosen-select'
+  .control-group
+    label.control-label Bến xe:
+    .controls
+      = f.select :from_station_id, @stations.map{|station| [station.name, station.id]},{include_blank: true},:class => 'chosen-select'
+  .control-group
+    label.control-label Đến:
+    .controls
+      = f.select :location_to_id, Location.all.map{|local| [local.name, local.id]},{include_blank: true},:class => 'chosen-select'
 
   .control-group
-    label.control-label Từ bến xe:
+    label.control-label Bến xe:
     .controls
-      = f.select :from_station_id, @stations.map{|station| [station.name, station.id]},{},:class => 'chosen-select'
-  .control-group
-    label.control-label Đến bến xe:
-    .controls
-      = f.select :to_station_id, @stations.map{|station| [station.name, station.id]},{},:class => 'chosen-select'
+      = f.select :to_station_id, @stations.map{|station| [station.name, station.id]},{include_blank: true},:class => 'chosen-select'
 
   .control-group
     label.control-label Khởi hàng lúc:
@@ -28,6 +36,16 @@
     label.control-label Thời gian dự kiến:
     .controls
       = f.number_field :duration
+
+  .control-group
+    label.control-label Xe:
+    .controls
+      = f.select :bus_id, @buses.map{|bus| [bus.name, bus.id]},{include_blank: true},:class => 'chosen-select'
+
+  .control-group
+    label.control-label Giá vé:
+    .controls
+      = f.number_field :price_ticket
 
   .control-group
     label.control-label Thông tin:
