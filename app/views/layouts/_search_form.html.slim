@@ -19,12 +19,12 @@
             lable.lable-control
               b Nơi đi:
             .control
-              = select_tag :from_location,options_from_collection_for_select(@locations, "id", "name"),{include_blank:true, class: 'span11 chosen-select'}
+              = select_tag :from_location,options_from_collection_for_select(@locations, "id", "name", params[:from_location].to_i),{include_blank:true, class: 'span11 chosen-select'}
           .control-group
             lable.lable-control
               b Nơi đến:
             .control
-              = select_tag :to_location,options_from_collection_for_select(@locations, "id", "name"),{include_blank:true, class: ' span11 chosen-select'}
+              = select_tag :to_location,options_from_collection_for_select(@locations, "id", "name", params[:to_location].to_i),{include_blank:true, class: ' span11 chosen-select'}
           .control-group
             lable.lable-control Ngày đi:
             .control

@@ -1,10 +1,10 @@
 h1.title
   |Vé xe từ
   span.blue
-    |  #{@from_location.name}
+    |  #{@from_location.try(:name)}
   |  đi
   span.orange
-    |  #{@to_location.name}
+    |  #{@to_location.try(:name)}
 .row
   .span2
     select.chosen-select.span2

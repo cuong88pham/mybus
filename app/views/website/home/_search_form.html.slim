@@ -7,18 +7,18 @@
             lable.lable-control
               b Nơi đi:
             .control
-              = select_tag :from_location,options_from_collection_for_select(@locations, "id", "name"),{include_blank:true, class: 'chosen-select'}
+              = select_tag :from_location,options_from_collection_for_select(@locations, "id", "name", params[:from_location].to_i),{include_blank:true, class: 'chosen-select'}
         .span3
           .control-group
             lable.lable-control
               b Nơi đi:
             .control
-              = select_tag :to_location,options_from_collection_for_select(@locations, "id", "name"),{include_blank:true, class: 'chosen-select'}
+              = select_tag :to_location,options_from_collection_for_select(@locations, "id", "name", params[:to_location].to_i),{include_blank:true, class: 'chosen-select'}
         .span3
           .control-group
             lable.lable-control Ngày đi:
             .control
-              = text_field_tag :search_from_dt, Date.today.strftime("%d-%m-%Y"), data: {behaviour: "datepicker", 'date-format' => 'dd-mm-yyyy'}
+              = text_field_tag :search_from_dt, params[:search_from_dt].present? ? params[:search_from_dt] : Date.today.strftime("%d-%m-%Y"), data: {behaviour: "datepicker", 'date-format' => 'dd-mm-yyyy'}
         .span1
           .control-group
             br/
