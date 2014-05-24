@@ -1,0 +1,46 @@
+= render 'header', :title => ' Danh sách vé xe đã được đặt'
+.row-fluid
+  .span12
+    .row-fluid
+      .span12
+        table#brands.table.table-striped.table-bordered.table-hover
+          thead
+            tr
+              th.center.span1
+                label
+                  input.ace type="checkbox" /
+                  span.lbl
+              th.span2 Tên Khách Hàng
+              th Email
+              th Phone
+              th Chuyến xe
+              th Nhà xe
+              th Số vé
+              th Trạng thái
+              th.span2.center Cập nhật
+              th.span1.center Xóa
+          tbody
+            - @tickets.each do |ticket|
+              tr
+                td.center.span1
+                  label
+                    input.ace type="checkbox" /
+                    span.lbl
+                td
+                  = ticket.fullname
+                td
+                  = ticket.email
+                td
+                  = ticket.phone
+                td
+                  = ticket.bus_trip.try(:name)
+                td
+                  = ticket.tenant.try(:name)
+                td
+                td
+
+                td.center
+                  i.icon-edit
+                td.center
+                  = link_to ticket_path(ticket),:method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Bạn có muốn xóa nhà xe này không?')) } do
+                    i.icon-remove

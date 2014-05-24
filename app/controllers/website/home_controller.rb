@@ -29,7 +29,12 @@ class Website::HomeController < ApplicationController
   end
 
   def booking
-    @booking = nil
+    @ticket = Ticket.new
+    @trip = BusTrip.includes(:location_from, :location_to, :tenant, :bus).find(params[:id])
+  end
+
+  def make_booking
+    Ticket.create(params[:ticket], :without_protection => true)
   end
 
 end

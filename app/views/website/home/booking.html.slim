@@ -1,1 +1,82 @@
-| Booking
+.container
+  .row
+    .span6
+      .row
+        .span6
+          h1.title Thông tin chuyến xe
+          table.table.table-striped.table-bordered.table-hover
+            tr
+              td.span2 Nơi đi:
+              td= @trip.location_from.name
+            tr
+              td.text-right Nơi đến:
+              td= @trip.location_to.name
+            tr
+              td.text-right Giờ đi:
+              td= @trip.started_at
+            tr
+              td.text-right Giờ đến:
+              td= @trip.started_at + @trip.duration.hours
+            tr
+              td.text-right Hạng:
+              td Gl
+            tr
+              td.text-right Số vé:
+              td= @trip.bus.has_bed
+
+      .row
+        .span6
+          h1.title Thông tin khách hàng
+          = simple_form_for @ticket,url: make_booking_path,html: { class: 'form-horizontal' } do |f|
+            .row
+              .span3
+                .control-group
+                  lable.lable-control Tên khách hàng:
+                  .control
+                    = f.text_field :fullname
+                .control-group
+                  lable.lable-control Điện thoại:
+                  .control
+                    = f.text_field :phone
+                .control-group
+                  lable.lable-control Email:
+                  .control
+                    = f.text_field :email
+              .span3
+                .control-group
+                  lable.lable-control Mật mã:
+                  .control
+                    = f.text_field :password
+                .control-group
+                  lable.lable-control Mã khuyến mãi:
+                  .control
+                    = f.text_field :promote_code
+                .control-group
+                  lable.lable-control Địa điểm đón:
+                  .control
+                    = f.text_field :pick_up_at
+                    = f.hidden_field :tenant_id, value: @trip.tenant_id
+                    = f.hidden_field :bus_trip_id, value: params[:id]
+              .span6
+                .control.text-center
+                  = f.submit "Đặt vé", class: 'btn btn-small btn-success'
+            / .control
+            /   = f.input :fullname
+            / .control
+            /   = f.input :phone
+            / .control
+            /   = f.input :email
+            / .control
+            /   = f.input :password
+            / .control
+            /   = f.input :promote_code
+            / .control
+            /   = f.input :pick_up_at
+    .span6
+      h1.title Sơ đồ vị trí
+      - if @trip.bus.has_bed == 1
+        = render 'bus_with_bed',seat: @trip.bus.seats, sub_seat: @trip.sub_seats
+      - else
+        = render 'bus_without_bed', seat: @trip.bus.seats, sub_seat: @trip.sub_seats
+
+

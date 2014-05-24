@@ -8,7 +8,7 @@ class BusTrip < ActiveRecord::Base
   belongs_to :location_from, class_name: 'Location', foreign_key: :location_from_id, primary_key: :id
   belongs_to :location_to, class_name: 'Location', foreign_key: :location_to_id, primary_key: :id
   belongs_to :bus
-  has_many :bus_movements
+  has_many :tickets
   before_save :set_bus_trip_name
 
   # Get active brand
