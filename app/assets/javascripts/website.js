@@ -16,7 +16,7 @@
 //= require bootstrap-datepicker.min
 //= require chosen.jquery.min
 //= require website/jquery.easing.1.3
-//= require website/camera.min
+//= require website/jquery.price.min
 //= require turbolinks
 
 $('document').ready(function(){
@@ -29,6 +29,28 @@ $('document').ready(function(){
   $('.chosen-select').chosen({
     allow_single_deselect: true,
     no_results_text: 'Không tìm thấy kết quả',
+  });
+  var ticket_sale = [];
+  $('.can_book_bed').click(function(){
+
+    if($(this).hasClass('current_book_bed')){
+      var index = ticket_sale.indexOf($(this).attr('data-ticket'));
+      if (index > -1) {
+          ticket_sale.splice(index, 1);
+      }
+      $(this).removeClass('current_book_bed');
+    }else{
+      $(this).addClass('current_book_bed');
+      ticket_sale.push($(this).attr('data-ticket'));
+    }
+    $('.ticket_quantity').html($('.current_book_bed').length)
+    var price = $('.total').attr('data-price') * $('.current_book_bed').length;
+    $('.total').html(price).priceFormat({
+      prefix: '',
+      thousandsSeparator: ',',
+      centsLimit: 0
+    });
+    $("#ticket_ticket_sale").val(ticket_sale.join());
   })
 })
 

@@ -2,85 +2,23 @@ table.table.table-bordered
   tr
     td.center colspan="5"
       = image_tag('wheel.png')
-  tr
-    td.left colspan="5" Tầng 1
+  - Ticket::SYMBOL_TICKETS_BED.each_with_index do |tickets, index|
+    tr
+      td.left colspan="5" Tầng #{index +1}
+    - if index == 0
+      tr
+        td.center PV
+        td.center
+        td.center
+        td.center
+        td.center LX
+    - tickets.each_with_index do |ticket, index|
 
-
-
-  tr
-    td.span2.center PV
-    td.span2
-    td.span2
-    td.span2
-    td.span2.center LX
-
-  tr
-    td.center 1
-    td.center
-    td.center 1
-    td.center
-    td.center 1
-
-  tr
-    td.center 1
-    td.center
-    td.center 1
-    td.center
-    td.center 1
-
-  tr
-    td.center 1
-    td.center
-    td.center 1
-    td.center
-    td.center 1
-
-  tr
-    td.center 1
-    td.center 1
-    td.center 1
-    td.center 1
-    td.center 1
-  tr
-    td.center 1
-    td.center 1
-    td.center 1
-    td.center 1
-    td.center 1
-  tr
-    td.left colspan="5" Tầng 2
-  tr
-    td.center 1
-    td.center
-    td.center 1
-    td.center
-    td.center 1
-
-  tr
-    td.center 1
-    td.center
-    td.center 1
-    td.center
-    td.center 1
-
-  tr
-    td.center 1
-    td.center
-    td.center 1
-    td.center
-    td.center 1
-  tr
-    td.center 1
-    td.center
-    td.center 1
-    td.center
-    td.center 1
-  tr
-    td.center 1
-    td.center 1
-    td.center 1
-    td.center 1
-    td.center 1
-
-
-
+      tr
+        - ticket.each_with_index do |t|
+          td.center
+            - if t.present?
+              - if @sale_ticket.include? t
+                span.ticket.booked_bed data-ticket="#{t}" = t
+              - else
+                span.ticket.can_book_bed data-ticket="#{t}" = t

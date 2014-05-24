@@ -22,7 +22,12 @@
               td Gl
             tr
               td.text-right Số vé:
-              td= @trip.bus.has_bed
+              td.ticket_quantity 0
+            tr
+              td.text-right
+                h4 Tổng Cộng:
+              td
+                h4.total data-price="#{@trip.price_ticket}" 0
 
       .row
         .span6
@@ -34,6 +39,7 @@
                   lable.lable-control Tên khách hàng:
                   .control
                     = f.text_field :fullname
+                    = f.hidden_field :ticket_sale
                 .control-group
                   lable.lable-control Điện thoại:
                   .control

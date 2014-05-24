@@ -31,6 +31,8 @@ class Website::HomeController < ApplicationController
   def booking
     @ticket = Ticket.new
     @trip = BusTrip.includes(:location_from, :location_to, :tenant, :bus).find(params[:id])
+    @sale_ticket = Ticket.where(bus_trip_id: params[:id]).pluck(:ticket_sale)
+    @sale_ticket = @sale_ticket.join(',').split(',') unless @sale_ticket.blank?
   end
 
   def make_booking
