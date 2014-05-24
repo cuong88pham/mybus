@@ -5,6 +5,8 @@ class Ticket < ActiveRecord::Base
 
   attr_protected :id, :tenant_id, :bus_trip_id, :fullname, :phone, :email, :password, :promote_code, :pick_up_at, :status, :ticket_sale
 
+  validates_presence_of :bus_trip_id, :fullname, :phone, :password, :ticket_sale
+  validates_presence_of :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
   SYMBOL_TICKETS_BED = [
     [
       ['A1','','B1','','C1'],
