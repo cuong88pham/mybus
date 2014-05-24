@@ -48,7 +48,7 @@ br/
             td= trip.started_at
             td= trip.started_at + trip.duration.hours
             td= trip.bus.seats
-            td= trip.price_ticket
+            td= number_with_precision(trip.price_ticket, precision: 0, delimiter:',')
             td= trip.bus.seats
             td
               = link_to 'Đặt Vé',"/booking/#{trip.id}", class: 'btn btn-small btn-success'
