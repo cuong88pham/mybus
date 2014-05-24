@@ -11,10 +11,6 @@ class BusesController < InheritedResources::Base
     new!
   end
 
-  def create
-    binding.pry
-    create!
-  end
   private
   def prepare_data
     if current_tenant.schema == 'admin'
