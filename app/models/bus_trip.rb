@@ -9,13 +9,13 @@ class BusTrip < ActiveRecord::Base
   belongs_to :location_to, class_name: 'Location', foreign_key: :location_to_id, primary_key: :id
   belongs_to :bus
   has_many :tickets
-  before_save :set_bus_trip_name
+  after_save :set_bus_trip_name
 
   # Get active brand
   scope :actived, where(is_valid: true)
 
   private
   def set_bus_trip_name
-    self.name ||= self.station_from.try(:name) + ' - ' + self.station_to.try(:name)
+    self.name ||= "#{self.station_from.try(:name)} - #{self.station_to.try(:name)}"
   end
 end
