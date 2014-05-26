@@ -5,4 +5,4 @@ h1.title
     - @posts.each do |post|
       .span3
         h4=post.title
-        .desc= post.post_desc
+        .desc= post.post_desc.html_safe

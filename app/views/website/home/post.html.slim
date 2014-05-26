@@ -8,5 +8,5 @@
           = @post.title
           span.share.pull-right
             | Chia sẽ
-        .description= @post.post_desc
-        .full_content= @post.post_content
+        .description= @post.post_desc.html_safe
+        .full_content= @post.post_content.html_safe
