@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require moment
 //= require bootstrap-datetime-picker
+//= require ckeditor-jquery
 //= require_tree .
 $('document').ready(function(){
     $('.date-picker').datetimepicker();

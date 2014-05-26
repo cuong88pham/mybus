@@ -14,8 +14,11 @@ class Tenant < ActiveRecord::Base
       :no  => false
     ]
 
+  # mount_uploader :logo, LogoUploader
   # Set enumerize is_valid field
   enumerize :is_valid, in: IS_VALID
+
+
 
   private
 

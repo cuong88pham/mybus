@@ -7,12 +7,12 @@
   .control-group
     label.control-label Mô tả:
     .controls
-      = f.text_area :post_desc
+      = f.text_area :post_desc, class: 'ckeditor'
 
   .control-group
     label.control-label Nội dung:
     .controls
-      = f.text_area :post_content
+      = f.text_area :post_content, class: 'ckeditor'
 
   .control-group
     label.control-label Metakey:
