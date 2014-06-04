@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
         redirect_to dashboards_path
       end
     else
-      return
+      redirect_to 'http://www.mybus.vn'
     end
   end
 
