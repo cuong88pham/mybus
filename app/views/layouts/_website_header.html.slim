@@ -20,7 +20,7 @@ nav.navbar.navbar-default role="navigation"
           - if params[:id].to_i == nav.id
             - active = 'active'
           li class="#{active}"
-            = link_to nav.title, "/post/#{nav.id}/#{nav.alias}"
+            = link_to nav.title, news_path({id: nav.id, alias: nav.alias})
         li
           a href="#"  Kiểm tra vé
         li class="#{news_active}"

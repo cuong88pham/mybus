@@ -11,7 +11,7 @@ Mybus::Application.routes.draw do
   root :to => 'website/home#index'
 
   get "search" => 'website/home#search'
-  get "post/:id/:alias" => 'website/home#post'
+  get "post/:id-:alias" => 'website/home#post', as: 'news'
   get "news" => 'website/home#news'
   get "contact" => 'website/home#contact'
   get "booking/:id" => 'website/home#booking'

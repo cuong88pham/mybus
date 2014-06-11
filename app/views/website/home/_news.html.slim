@@ -5,5 +5,5 @@ h1.title
     - @posts.each do |post|
       .span3
         h4
-          = link_to post.title, "/post/#{post.id}/#{post.alias}"
+          = link_to post.title, news_path({id: post.id, alias: post.alias})
         .desc= post.post_desc.html_safe
