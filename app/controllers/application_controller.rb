@@ -24,8 +24,6 @@ class ApplicationController < ActionController::Base
       if controller_name == 'home'
         redirect_to dashboards_path
       end
-    else
-      redirect_to 'http://www.mybus.vn' unless request.subdomain == 'www'
     end
   end
 

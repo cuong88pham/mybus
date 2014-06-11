@@ -4,5 +4,6 @@ h1.title
   .row
     - @posts.each do |post|
       .span3
-        h4=post.title
+        h4
+          = link_to post.title, "/post/#{post.id}/#{post.alias}"
         .desc= post.post_desc.html_safe

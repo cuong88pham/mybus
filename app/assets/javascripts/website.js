@@ -17,7 +17,6 @@
 //= require chosen.jquery.min
 //= require website/jquery.easing.1.3
 //= require website/jquery.price.min
-//= require turbolinks
 
 $('document').ready(function(){
   $('input[data-behaviour*=datepicker]').datepicker({autoclose:true}).next().on('click', function(){

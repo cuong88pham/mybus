@@ -3,6 +3,7 @@ html
   head
     title
       = "MyBus"
+    = favicon_link_tag 'fav.png'
     link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"
     link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css"
     link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" type="text/css"
@@ -11,6 +12,7 @@ html
 
     = csrf_meta_tags
   body
+    #fb-root
     .main-container.container
       .row
         .span12
@@ -30,7 +32,14 @@ html
       = render 'layouts/website_footer'
     a#btn-scroll-up.btn-scroll-up.btn.btn-small.btn-inverse href="#"
       i.icon-double-angle-up.icon-only.bigger-110
+    javascript:
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
 
     script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"
     = javascript_include_tag "website", "data-turbolinks-track" => true
-

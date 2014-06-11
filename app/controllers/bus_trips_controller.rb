@@ -5,11 +5,6 @@ class BusTripsController < InheritedResources::Base
   before_action :prepare_data, only: [:new, :create, :update, :show]
   before_action :authenticate_user!
 
-  def create
-    binding.pry
-    create!
-  end
-
   private
   def prepare_data
     @stations = Station.all

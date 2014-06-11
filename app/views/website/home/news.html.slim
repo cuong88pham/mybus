@@ -1,12 +1,10 @@
 .container
   .row
-    .span4
-      = render 'layouts/search_form'
-    .span8
+    .span12
       #main-content
         - @posts.each do |post|
           h1.title
-            = post.title
+            = link_to post.title, "/post/#{post.id}/#{post.alias}"
             span.share.pull-right
-              | Chia sẽ
+              .fb-share-button data-href="/post/#{post.id}/#{post.alias}" data-type="button"
           .description= post.post_desc

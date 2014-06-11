@@ -13,7 +13,7 @@ class Website::HomeController < ApplicationController
   end
 
   def news
-    @posts = Post.all
+    @posts = Post.all.order("posts.order asc, posts.updated_at desc")
     @locations = Location.all
   end
 
