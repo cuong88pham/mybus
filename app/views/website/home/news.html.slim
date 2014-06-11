@@ -5,7 +5,7 @@
       #main-content
         - @posts.each do |post|
           h1.title
-            = link_to post.title, "/post/#{post.id}/#{post.alias}"
+            = link_to post.title, news_path({id: post.id, alias: post.alias})
             span.share.pull-right
               .fb-share-button data-href="/post/#{post.id}/#{post.alias}" data-type="button"
           .description= post.post_desc
