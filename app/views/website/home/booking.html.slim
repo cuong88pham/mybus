@@ -67,6 +67,7 @@
               .span6
                 .control.text-center
                   = f.submit "Đặt vé", class: 'btn btn-small btn-success'
+                  = link_to 'Thanh toán trực tuyến', @payment_url
             / .control
             /   = f.input :fullname
             / .control
