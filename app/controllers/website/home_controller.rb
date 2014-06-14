@@ -10,7 +10,7 @@ class Website::HomeController < ApplicationController
   def nganluong
     respond_to do |format|
       format.text {
-        render :text => "d79f6705e0353afae77f242b980ee44a"
+        render :text => "b8187271d90321c6b065d7627e3ec646"
       }
     end
   end
@@ -45,6 +45,15 @@ class Website::HomeController < ApplicationController
     @sale_ticket = Ticket.where(bus_trip_id: params[:id]).pluck(:ticket_sale)
     @sale_ticket = @sale_ticket.join(',').split(',') unless @sale_ticket.blank?
     @title     = "Đặt vé"
+
+    payment_params  = {
+      'return_url'          =>  'http://mybus.dev:3000',
+      'receiver'            =>  'nghiakt@peacesoft.net',
+      'transaction_info'    =>  '',
+      'order_code'          =>  'Testing 001',
+      'price'               =>  '1000'
+    }
+    @payment_url = Checkout.build_link_checkout('basic', payment_params)
   end
 
   def make_booking
