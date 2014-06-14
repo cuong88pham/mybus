@@ -7,7 +7,7 @@ class Bus < ActiveRecord::Base
 
   validates :name, presence: true
   validates :code, uniqueness: true
-  validates :seats, uniqueness: true
+  validates :seats, presence: true
   scope :by_tenant, lambda{|tenant_id| where(tenant_id: tenant_id) unless tenant_id.blank?}
   accepts_nested_attributes_for :bus_drivers
   TYPES = {

@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    if request.subdomain.present? && Apartment::Database.current_database != "" && request.subdomain != 'www'
+    if request.subdomain.present? && Apartment::Database.current_tenant != "" && request.subdomain != 'www'
       authenticate_user!
       if controller_name == 'home'
         redirect_to dashboards_path
