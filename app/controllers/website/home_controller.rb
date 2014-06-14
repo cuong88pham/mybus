@@ -10,7 +10,7 @@ class Website::HomeController < ApplicationController
   def nganluong
     respond_to do |format|
       format.text {
-        render :text => "b8187271d90321c6b065d7627e3ec646"
+        render :text => "6d27c05752b94d1a62a38e343e82c98a"
       }
     end
   end
