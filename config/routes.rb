@@ -15,6 +15,7 @@ Mybus::Application.routes.draw do
   get "news" => 'website/home#news'
   get "contact" => 'website/home#contact'
   get "booking/:id" => 'website/home#booking'
+  get "nganluong" => 'website/home#nganluong'
   post "make_booking" => 'website/home#make_booking'
 
   get "dashboards",       to: "dashboards#index"

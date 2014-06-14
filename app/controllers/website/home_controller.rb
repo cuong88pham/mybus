@@ -1,10 +1,18 @@
 class Website::HomeController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, :txt
   layout 'website'
   def index
     @locations = Location.all
     @posts     = Post.where(show_in_home_page: true).paginate(:page => params[:page], :per_page => 4)
     @title     = 'Trang chủ'
+  end
+
+  def nganluong
+    respond_to do |format|
+      format.text {
+        render :text => "d79f6705e0353afae77f242b980ee44a"
+      }
+    end
   end
 
   def post
