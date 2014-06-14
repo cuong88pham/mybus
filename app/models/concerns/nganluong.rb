@@ -5,9 +5,9 @@ module Nganluong
   # Địa chỉ thanh toán hoá đơn của NgânLượng.vn
   NGANLUONG_URL       = 'http://sandbox.nganluong.vn/checkout.php'
   # Mã website của bạn đăng ký trong chức năng tích hợp thanh toán của NgânLượng.vn.
-  MERCHANT_SITE_CODE  = '642'
+  MERCHANT_SITE_CODE  = '805'
   # Mật khẩu giao tiếp giữa website của bạn và NgânLượng.vn.
-  SECURITY_PASS       = '123456789'
+  SECURITY_PASS       = '12344321'
   # Mã đối tác tham gia chương trình liên kết của NgânLượng.vn
   AFFILIATE_CODE      = ''
 
