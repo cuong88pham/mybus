@@ -20,6 +20,7 @@ Mybus::Application.routes.draw do
 
   get "dashboards",       to: "dashboards#index"
   resources :buses
+  resources :reports
   resources :brands
   resources :tenants
   resources :stations
@@ -33,4 +34,7 @@ Mybus::Application.routes.draw do
   resources :bus_services
   resources :locations
   resources :posts
+  resources :users do
+    post 'create_user', on: :collection, to: 'users#create'
+  end
 end

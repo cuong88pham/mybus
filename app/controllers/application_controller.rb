@@ -52,4 +52,8 @@ class ApplicationController < ActionController::Base
     # User.current = current_user
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
 end

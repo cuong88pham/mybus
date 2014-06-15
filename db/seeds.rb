@@ -7,10 +7,22 @@
 # Works for mysql, sqlite, sqlite3
 [["admin.mybus.dev", "admin"]].each do |tenant_info|
   if (tenant = Tenant.find_by_schema(tenant_info[1]))
-    tenant.update_attribute(:domain, tenant_info[0])
+    tenant.update_attributes(domain: tenant_info[0])
   else
     tenant = Tenant.create(domain: tenant_info[0], schema: tenant_info[1])
     puts "--> Creating Tenant: " + tenant.schema
+  end
+end
+roles = [
+  ['admin','Administrator'],
+  ['staff', 'Staff']
+]
+
+roles.each do |role_info|
+  if (role = Role.find_by_name(role_info[0]))
+    role.update_attributes(desc: role_info[1])
+  else
+    role = Role.create(name: role_info[0], desc: role_info[1])
   end
 end
 
@@ -50,4 +62,24 @@ vnprovinces = [
 ]
 vnprovinces.each do |province|
   Location.create(code: province[0], name: province[1]);
+end
+
+# Add permissions
+actions = ['manage', 'read', 'create', 'update', 'approve', 'destroy']
+subject_class = ActiveRecord::Base.connection.tables.reject{|x| x == 'schema_migrations'}.collect{|x| x.classify}.compact
+
+subject_class.each do |klass|
+  actions.each do |act|
+    permission = Permission.create(action: act, subject_class: klass)
+    puts "--> Creating Permission: " + permission.subject_class.to_s + " / " + permission.action.to_s unless Rails.env.test?
+  end
+end
+
+['Dashboard', 'Report', 'Import', 'SaleTicket'].each do |extra_klass|
+  Permission.create(action: 'manage', subject_class: extra_klass) unless (permission = Permission.where(action: 'manage', subject_class: extra_klass).first)
+end
+
+actions.each do |act|
+  Permission.create(action: act, subject_class: 'PaymentTransaction')
+  Permission.create(action: act, subject_class: 'Company')
 end

@@ -139,3 +139,8 @@ h1 span.share{
   background-position: bottom right;
   margin: 0 auto;
 }
+.btn-larger{
+  width: 200px !important;
+  padding: 50px 0 !important;
+  font-size: 30px !important;
+}

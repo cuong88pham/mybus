@@ -8,8 +8,9 @@ class BusTrip < ActiveRecord::Base
   belongs_to :location_from, class_name: 'Location', foreign_key: :location_from_id, primary_key: :id
   belongs_to :location_to, class_name: 'Location', foreign_key: :location_to_id, primary_key: :id
   belongs_to :bus
+  belongs_to :driver
   has_many :tickets
-  after_save :set_bus_trip_name
+  before_save :set_bus_trip_name
 
   # Get active brand
   scope :actived, where(is_valid: true)

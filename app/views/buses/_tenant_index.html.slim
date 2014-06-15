@@ -1,0 +1,6 @@
+.row-fluid
+  - @buses.each do |bus|
+    .span2.text-center
+      = link_to bus_path(bus), class: 'btn btn-primary btn-app radius-4' do
+        i.ace-icon.icon-truck.bigger-160
+        = bus.code

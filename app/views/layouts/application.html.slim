@@ -16,8 +16,13 @@ html
   body
     =render 'layouts/admin_header'
     .main-container.container-fluid
-      = render 'layouts/admin_side_navigation'
-      .main-content
+      - if current_tenant.try(:schema) == 'admin'
+        = render 'layouts/admin_side_navigation'
+        .main-content
+          = render 'layouts/admin_breadcrumb'
+          .page-content
+            = yield
+      - else
         = render 'layouts/admin_breadcrumb'
         .page-content
           = yield

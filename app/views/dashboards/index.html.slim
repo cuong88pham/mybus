@@ -1,2 +1,27 @@
-h1.center
-  = "Hallo #{current_tenant.name}"
+h1.text-center
+  = "Chào mừng bạn đến với hệ thống quản lý nhà xe #{current_tenant.name}"
+br/
+br/
+br/
+.row-fluid
+  .span12
+    - if can?(:manager, 'SaleTicket')
+      .span3.text-center
+        = link_to "#", class: 'btn btn-larger btn-primary btn-app radius-4' do
+          i.ace-icon.icon-shopping-cart.bigger-160
+          | Bán vé
+    - if can?(:manager, Bus)
+      .span3.text-center
+        = link_to buses_path, class: 'btn btn-larger btn-success btn-app radius-4' do
+          i.ace-icon.icon-truck.bigger-160
+          | Quản lý xe
+    - if can?(:manager, 'Report')
+      .span3.text-center
+        = link_to "#", class: 'btn btn-larger btn-warning btn-app radius-4' do
+          i.ace-icon.icon-list-alt.bigger-160
+          | Báo cáo
+    - if can?(:manager, User)
+      .span3.text-center
+        = link_to users_path, class: 'btn btn-larger btn-info btn-app radius-4' do
+          i.ace-icon.icon-user.bigger-160
+          | Nhân viên

@@ -9,6 +9,10 @@ class Tenant < ActiveRecord::Base
   has_many :drivers
   has_many :buses
 
+  validates :name, presence: true, uniqueness: true
+  validates :domain, presence: true, uniqueness: true
+  validates :schema, presence: true, uniqueness: true
+
   IS_VALID = [
       :yes => true,
       :no  => false

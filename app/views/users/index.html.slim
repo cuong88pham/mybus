@@ -1,0 +1,55 @@
+
+= render 'header', :title => 'Danh sách nhân viên'
+.row-fluid
+  br
+  table.table.table-bordered.table-hover
+    thead
+      tr
+        th.center Tên
+        th.center Email
+        th.center Trạng thái
+        th.center Quyền hạn
+        th.center Đăng nhập lần cuối
+        th.center IP
+        - # =t('layouts.last_ip_login')
+        th.center
+    tbody
+      - @users.each do |user|
+        tr
+          td
+            i.icon-caret-right
+            = user.name
+          td
+            i.icon-envelope
+            = link_to user.email, user_path(user)
+          td.center
+            - if user.status
+              span.label.label-success= user.status.text
+            - else
+              span.label.label-warning= user.status.text
+          td.center
+            = user.roles.map(&:name).join(', ')
+          td
+            = user.last_sign_in_at.strftime("%d-%m-%Y") unless user.last_sign_in_at.blank?
+          th
+            = user.last_sign_in_ip
+          td
+            - if user.status
+              = link_to 'Deactive', user_path(user, params: {user: {status: false}}), :method => :put, class: 'btn btn-mini btn-info'
+            - else
+              = link_to 'Active', user_path(user, params: {user: {status: true}}), :method => :put, class: 'btn btn-mini btn-warning'
+            - if can?(:update, User) && can?(:read, Role)
+              | &nbsp;&nbsp; Add Roles
+
+/ - unless @users.empty?
+/   .modal-form.modal.hide.fade{"aria-hidden" => "true"}
+/     .modal-header
+/       button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+/       h6#modal-formLabel Update Role
+/     .modal-body{style: ""}
+/       = simple_form_for @users[0], html: { class: 'form-horizontal', id: 'form_add_role' } do |f|
+/         = f.error_notification
+/         .row-fluid
+/           = f.association :roles
+/         .control-group.controls
+/           = f.button :submit, :class => 'btn-primary', value: 'Save Change'

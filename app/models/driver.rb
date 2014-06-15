@@ -3,6 +3,7 @@ class Driver < ActiveRecord::Base
   has_many :driver_movements
   belongs_to :tenant
   belongs_to :bus_driver
+  has_many   :bus_trips
   scope :by_tenant, lambda{|tenant_id| where(tenant_id: tenant_id) unless tenant_id.blank?}
   # Constants
   TYPES = {

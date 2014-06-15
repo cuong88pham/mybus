@@ -1,0 +1,41 @@
+.row-fluid
+  .span5
+    h4.header.smaller.lighter.blue
+      i.icon-star
+      | Thông tin cơ bản
+
+    = simple_nested_form_for resource, :url => "#{resource.new_record? ? create_user_users_path : resource_path }", html: { class: 'form-horizontal' } do |f|
+      = f.error_notification
+
+      = f.input :email, :required => true
+      = f.input :username , :required => true
+      = f.input :name , :required => true
+
+      - if ['new', 'create'].include?(action_name)
+        = f.input :password, :required => true, type: "password"
+        = f.input :password_confirmation, :required => true, type: "password"
+
+      = f.association :roles, input_html:{:class => 'chosen-select'}
+
+      = f.hidden_field :status, :value => "true"
+
+      .controls
+        br/
+        = f.button :submit, :class => 'btn btn-primary btn-small'
+  .span1
+
+  .span5
+    - if !['new', 'create'].include?(action_name)
+      h4.header.smaller.lighter.blue
+        i.icon-key
+        =t('layouts.change_password')
+
+      = simple_form_for @user, html: { class: 'form-horizontal' } do |f|
+        = f.error_notification
+
+        = f.input :password, :required => true, type: "password"
+        = f.input :password_confirmation, :required => true, type: "password"
+
+        .controls
+          br/
+          = f.button :submit, :class => 'btn btn-primary btn-small', value: "Đổi mật khẩu"

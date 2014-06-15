@@ -11,6 +11,11 @@ class BusesController < InheritedResources::Base
     new!
   end
 
+  def show
+    @bus_trips = BusTrip.includes(:driver).where(bus_id: resource.id)
+    @bus_id = resource.id
+    show!
+  end
   private
   def prepare_data
     if current_tenant.schema == 'admin'
@@ -20,6 +25,10 @@ class BusesController < InheritedResources::Base
       @drivers   = Driver.by_tenant(current_tenant.id)
       @tenants   = nil
     end
+    @bustrip = BusTrip.new
+    @stations = Station.all
+    @brands   = Tenant.all
+    @buses    = Bus.all
   end
 
   def collection

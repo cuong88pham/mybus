@@ -1,4 +1,25 @@
-= render 'header', :title => " Thông tin xe #{resource.code}"
+/ = render 'header', :title => " Thông tin xe #{resource.code}"
+
 .row-fluid
-  .span12
-    = render 'form'
+  .tabbable
+    ul.nav.nav-tabs
+      li class="#{params[:act].blank? ? 'active' : ''}"
+        = link_to 'Thông tin xe', bus_path(resource)
+      li class="#{params[:act] == 'add_movement' ? 'active' : ''}"
+        = link_to 'Thêm lịch chạy', bus_path(resource,act: 'add_movement')
+      li class="#{params[:act] == 'movement_history' ? 'active' : ''}"
+        = link_to 'Lịch sử chạy', bus_path(resource,act: 'movement_history')
+  - if params[:act].blank?
+    .span12
+      .page-header
+        h1="Thông tin xe #{resource.code}"
+      = render 'form'
+  - elsif params[:act] == 'add_movement'
+    .span8
+      .page-header
+        h1="Thông tin các chuyến xe của xe #{resource.code}"
+      = render 'movement_form'
+  - elsif params[:act] == 'movement_history'
+    .page-header
+      h1="Thông tin các chuyến xe của xe #{resource.code}"
+    = render 'movement_history'
