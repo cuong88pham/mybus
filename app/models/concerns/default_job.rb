@@ -10,6 +10,8 @@ module DefaultJob
         username: 'admin',
         email: params[:email], password: '12344321'
       )
+      role = Role.find_by_name('admin')
+      Assignment.create(user_id: user.id, role_id: role.id) unless role.blank?
       # Send Mail to user
       # Do it later
     end
