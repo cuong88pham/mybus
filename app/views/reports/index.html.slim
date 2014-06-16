@@ -2,7 +2,7 @@
   .tabbable
     ul.nav.nav-tabs
       li class="#{params[:act].blank? ? 'active' : ''}"
-        = link_to 'Doanh thu', reports_path()
+        = link_to 'Báo cáo Doanh thu', reports_path()
       li class="#{params[:act] == 'ticket' ? 'active' : ''}"
         = link_to 'Vé xe', reports_path(act: 'ticket')
       li class="#{params[:act] == 'customer' ? 'active' : ''}"
