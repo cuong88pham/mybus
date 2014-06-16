@@ -17,7 +17,7 @@ br/
           | Quản lý xe
     - if can?(:manager, 'Report')
       .span3.text-center
-        = link_to "#", class: 'btn btn-larger btn-warning btn-app radius-4' do
+        = link_to reports_path(), class: 'btn btn-larger btn-warning btn-app radius-4' do
           i.ace-icon.icon-list-alt.bigger-160
           | Báo cáo
     - if can?(:manager, User)
