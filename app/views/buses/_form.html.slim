@@ -6,7 +6,7 @@
       .controls
         = f.select :tenant_id, @tenants.map{|tenant| [tenant.name, tenant.id]},{},:class => 'chosen-select'
   - else
-    = f.input :tenant_id,as: :hidden input_html:{value: current_tenant.id}
+    = f.input :tenant_id,as: :hidden, input_html:{value: current_tenant.id}
 
   .control-group
     label.control-label Tên xe:
