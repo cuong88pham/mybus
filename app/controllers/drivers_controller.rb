@@ -5,7 +5,6 @@ class DriversController < InheritedResources::Base
   before_action :authenticate_user!
 
   private
-
   def prepare_form
     if current_tenant.schema == 'admin'
       @tenants = Tenant.all
