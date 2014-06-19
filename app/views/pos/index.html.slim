@@ -28,8 +28,33 @@ h1.text-center Bán vé
 
   br/
   .row-fluid
-    - @buses.each do |bus|
-      .span2.text-center
-        = link_to "/pos/booking/#{bus.id}", class: 'btn btn-primary btn-app radius-4' do
-          i.ace-icon.icon-truck.bigger-160
-          = bus.code
+    .span12
+      table.table.table-striped.table-bordered.table-hover
+        thead
+          tr
+            th Xe/Tài
+            th Nơi đi
+            th Nơi đến
+            th Giờ đi
+            th Giờ đến
+            th Loại xe
+            th Giá vé
+            th Chỗ trống
+            th Đặt vé
+        tbody
+          - @bus_trips.each do |trip|
+
+            - tickets = trip.tickets.present? ? trip.tickets.pluck(:ticket_sale).join(",").split(",").count : trip.bus.try(:seats).to_i
+            - if tickets < trip.bus.try(:seats).to_i
+              tr
+                td= trip.bus.name + " / " + trip.driver.code + " / " + trip.driver.name
+                td= trip.location_from.name
+                td= trip.location_to.name
+                td= trip.started_at
+                td= trip.started_at + trip.duration.hours
+                td= trip.bus.try(:seats).to_i
+                td= number_with_precision(trip.price_ticket, precision: 0, delimiter:',')
+                td= trip.bus.try(:seats).to_i
+                td
+                  = link_to 'Đặt Vé',"/pos/booking/#{trip.id}", class: 'btn btn-small btn-success'
+
