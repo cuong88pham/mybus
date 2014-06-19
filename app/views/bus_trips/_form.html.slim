@@ -10,7 +10,7 @@
       .controls
         = f.select :tenant_id, @brands.map{|brand| [brand.name, brand.id]},{},:class => 'chosen-select'
   - else
-    = f.input :tenant_id, as: :hidden, value: current_tenant.id
+    = f.input :tenant_id, as: :hidden, input_html:{value: current_tenant.id}
   .control-group
     label.control-label Tài xế:
     .controls

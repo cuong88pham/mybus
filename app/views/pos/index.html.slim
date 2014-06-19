@@ -1,0 +1,35 @@
+h1.text-center Bán vé
+.row-fluid
+  = form_tag pos_path, :method => 'get', class: 'form-horizontal' do
+    .control-group
+      lable.lable-control
+        b Nơi đi:
+      .control
+        = select_tag :from_location,options_from_collection_for_select(@locations, "id", "name", params[:from_location].to_i),{include_blank:true, class: 'span11 chosen-select'}
+    .control-group
+      lable.lable-control
+        b Nơi đến:
+      .control
+        = select_tag :to_location,options_from_collection_for_select(@locations, "id", "name", params[:to_location].to_i),{include_blank:true, class: ' span11 chosen-select'}
+    .control-group
+      lable.lable-control Ngày đi:
+      .control
+        = text_field_tag :search_from_dt, Date.today.strftime("%d-%m-%Y"), class: 'span12', data: {behaviour: "datepicker", 'date-format' => 'dd-mm-yyyy'}
+    .control-group
+      = submit_tag "Tìm kiếm", :name => nil, class: 'btn btn-small btn-success'
+- if @show_result
+  h1.title
+    |Vé xe từ
+    span.blue
+      |  #{@from_location.try(:name)}
+    |  đi
+    span.orange
+      |  #{@to_location.try(:name)}
+
+  br/
+  .row-fluid
+    - @buses.each do |bus|
+      .span2.text-center
+        = link_to "/pos/booking/#{bus.id}", class: 'btn btn-primary btn-app radius-4' do
+          i.ace-icon.icon-truck.bigger-160
+          = bus.code

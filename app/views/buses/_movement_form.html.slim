@@ -3,12 +3,13 @@
     label.control-label Mã số chuyến:
     .controls
       = f.text_field :code
-      = f.input :tenant_id, as: :hidden
+
       = f.input :bus_id, as: :hidden, input_html:{value: @bus_id}
   .control-group
     label.control-label Từ:
     .controls
       = f.select :location_from_id, Location.all.map{|local| [local.name, local.id]},{include_blank: true},:class => 'chosen-select'
+      = f.input :tenant_id, input_html:{value: current_tenant.id}
   .control-group
     label.control-label Bến xe:
     .controls

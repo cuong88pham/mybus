@@ -1,0 +1,9 @@
+= form_for @po do |f|
+  - if @po.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@po.errors.count, "error")} prohibited this po from being saved:"
+      ul
+        - @po.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit 'Save'

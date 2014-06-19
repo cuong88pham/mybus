@@ -14,7 +14,7 @@ class BusTrip < ActiveRecord::Base
 
   # Get active brand
   scope :actived, where(is_valid: true)
-
+  scope :by_tenant, lambda{|tenant_id| where(tenant_id: tenant_id) unless tenant_id.blank?}
   private
   def set_bus_trip_name
     self.name ||= "#{self.station_from.try(:name)} - #{self.station_to.try(:name)}"

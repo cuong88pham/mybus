@@ -20,6 +20,9 @@ Mybus::Application.routes.draw do
 
   get "dashboards",       to: "dashboards#index"
   resources :buses
+  resources :pos do
+    get "booking/:id", on: :collection, to: 'pos#booking'
+  end
   resources :reports
   resources :brands
   resources :tenants

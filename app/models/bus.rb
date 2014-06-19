@@ -4,6 +4,7 @@ class Bus < ActiveRecord::Base
   has_many :driver_movements
   belongs_to :tenant
   has_many :bus_drivers
+  has_many :bus_trips
 
   validates :name, presence: true
   validates :code, uniqueness: true
