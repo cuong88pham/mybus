@@ -15,12 +15,12 @@
           = select_tag :to_location,options_from_collection_for_select(@locations, "id", "name", params[:to_location].to_i),{include_blank:true, class: '  chosen-select'}
     .span3
       .control-group
-        lable.lable-control Ngày đi:
+        lable.lable-control Từ ngày:
         .control
           = text_field_tag :search_from_dt, Date.today.strftime("%d-%m-%Y"), data: {behaviour: "datepicker", 'date-format' => 'dd-mm-yyyy'}
     .span3
       .control-group
-          lable.lable-control Ngày đến:
+          lable.lable-control Đến ngày:
           .control
             = text_field_tag :search_to_dt, Date.today.strftime("%d-%m-%Y"), data: {behaviour: "datepicker", 'date-format' => 'dd-mm-yyyy'}
 
