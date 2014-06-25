@@ -43,8 +43,7 @@ h1.text-center Bán vé
             th Đặt vé
         tbody
           - @bus_trips.each do |trip|
-
-            - tickets = trip.tickets.present? ? trip.tickets.pluck(:ticket_sale).join(",").split(",").count : trip.bus.try(:seats).to_i
+            - tickets = trip.tickets.present? ? trip.tickets.pluck(:ticket_sale).join(",").split(",").count : 0
             - if tickets < trip.bus.try(:seats).to_i
               tr
                 td= trip.bus.name + " / " + trip.driver.code + " / " + trip.driver.name

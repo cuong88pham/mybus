@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    binding.pry
     if request.subdomain.present? && Apartment::Database.current_tenant != "" && request.subdomain != 'www'
       authenticate_user!
       if controller_name == 'home'

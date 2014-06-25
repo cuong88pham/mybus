@@ -3,8 +3,15 @@ class Ticket < ActiveRecord::Base
   belongs_to :bus_trip
   belongs_to :tenant
 
-  validates_presence_of :bus_trip_id, :fullname, :phone, :password, :ticket_sale
+  validates_presence_of :bus_trip_id, :fullname, :phone, :ticket_sale
   validates_presence_of :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+
+  STATUS = {
+    'pending' => '001',
+    'paid'    => '002',
+    'unpaid'  => '003'
+  }
+
   SYMBOL_TICKETS_BED = [
     [
       ['A1','','B1','','C1'],
@@ -23,5 +30,7 @@ class Ticket < ActiveRecord::Base
       ['D2','D4','D6','D8','D10']
     ]
   ]
+
+  enumerize :status, in: STATUS
 
 end

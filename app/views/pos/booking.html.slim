@@ -1,1 +1,81 @@
-| Booking
+- title "#{@title}"
+.container
+  .row
+    .span6
+      .row
+        .span6
+          h1.title Thông tin chuyến xe
+          table.table.table-striped.table-bordered.table-hover
+            tr
+              td.span2 Nơi đi:
+              td= @trip.location_from.name
+            tr
+              td.text-right Nơi đến:
+              td= @trip.location_to.name
+            tr
+              td.text-right Giờ đi:
+              td= @trip.started_at
+            tr
+              td.text-right Giờ đến:
+              td= @trip.started_at + @trip.duration.hours
+            tr
+              td.text-right Hạng:
+              td Gl
+            tr
+              td.text-right Số vé:
+              td.ticket_quantity 0
+            tr
+              td.text-right
+                h4 Tổng Cộng:
+              td
+                h4.total data-price="#{@trip.price_ticket}" 0
+
+      .row
+        .span6
+          h1.title Thông tin khách hàng
+          = simple_form_for @ticket,url: pos_make_booking_path,html: { class: 'form-horizontal' } do |f|
+            .row
+              .span6
+                .control-group
+                  lable.lable-control Tên khách hàng:
+                  .control
+                    = f.text_field :fullname, class: 'span6'
+                    = f.hidden_field :ticket_sale
+                .control-group
+                  lable.lable-control Điện thoại:
+                  .control
+                    = f.text_field :phone, class: 'span6'
+                .control-group
+                  lable.lable-control Email:
+                  .control
+                    = f.text_field :email, class: 'span6'
+                .control-group
+                  lable.lable-control Địa điểm đón:
+                  .control
+                    = f.text_field :pick_up_at, class: 'span6'
+                    = f.hidden_field :tenant_id, value: @trip.tenant_id
+                    = f.hidden_field :bus_trip_id, value: params[:id]
+                    = f.hidden_field :status, value: 'paid'
+              .span6
+                .control.text-center
+                  = f.submit "Đặt vé", class: 'btn btn-small btn-success'
+            / .control
+            /   = f.input :fullname
+            / .control
+            /   = f.input :phone
+            / .control
+            /   = f.input :email
+            / .control
+            /   = f.input :password
+            / .control
+            /   = f.input :promote_code
+            / .control
+            /   = f.input :pick_up_at
+    .span6
+      h1.title Sơ đồ vị trí
+      - if @trip.bus.has_bed == 1
+        = render 'bus_with_bed',seat: @trip.bus.seats, sub_seat: @trip.sub_seats
+      / - else
+      /   = render 'bus_without_bed', seat: @trip.bus.seats, sub_seat: @trip.sub_seats
+
+

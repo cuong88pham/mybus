@@ -17,6 +17,7 @@ Mybus::Application.routes.draw do
   get "booking/:id" => 'website/home#booking'
   get "nganluong" => 'website/home#nganluong'
   post "make_booking" => 'website/home#make_booking'
+  post "pos_make_booking" => 'pos#make_booking'
 
   get "dashboards",       to: "dashboards#index"
   resources :buses

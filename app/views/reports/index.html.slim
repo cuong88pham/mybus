@@ -8,7 +8,6 @@
       li class="#{params[:act] == 'customer' ? 'active' : ''}"
         = link_to 'Khách hàng', reports_path(act: 'customer')
   .page-content
+    = render "search_form"
     - if params[:act].present?
       = render "#{params[:act]}"
-    - else
-      | Fucking it

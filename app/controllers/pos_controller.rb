@@ -13,7 +13,15 @@ class PosController < InheritedResources::Base
   end
 
   def booking
+    @ticket = Ticket.new
+    @trip = BusTrip.includes(:location_from, :location_to, :tenant, :bus).find(params[:id])
+    @sale_ticket = Ticket.where(bus_trip_id: params[:id]).pluck(:ticket_sale)
+    @sale_ticket = @sale_ticket.join(',').split(',') unless @sale_ticket.blank?
+    @title     = "Đặt vé"
+  end
 
+  def make_booking
+    Ticket.create(params.require(:ticket).permit(:tenant_id, :bus_trip_id, :fullname, :phone, :email, :pick_up_at, :status, :ticket_sale))
   end
 
 end

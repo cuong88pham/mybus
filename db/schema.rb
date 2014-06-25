@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615134340) do
+ActiveRecord::Schema.define(version: 20140625143914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -233,16 +233,18 @@ ActiveRecord::Schema.define(version: 20140615134340) do
   end
 
   create_table "tickets", force: true do |t|
-    t.integer "tenant_id"
-    t.integer "bus_trip_id"
-    t.string  "fullname"
-    t.string  "phone"
-    t.string  "email"
-    t.string  "password"
-    t.string  "promote_code"
-    t.string  "pick_up_at"
-    t.string  "status"
-    t.string  "ticket_sale"
+    t.integer  "tenant_id"
+    t.integer  "bus_trip_id"
+    t.string   "fullname"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "password"
+    t.string   "promote_code"
+    t.string   "pick_up_at"
+    t.string   "status",       default: "003"
+    t.string   "ticket_sale"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
