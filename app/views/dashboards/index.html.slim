@@ -7,7 +7,7 @@ br/
   .span12
     - if can?(:manager, 'SaleTicket')
       .span4.text-center
-        = link_to "#", class: 'btn btn-larger btn-primary btn-app radius-4' do
+        = link_to pos_path, class: 'btn btn-larger btn-primary btn-app radius-4' do
           i.ace-icon.icon-shopping-cart.bigger-160
           | Bán vé
     - if can?(:manager, Bus)

@@ -12,6 +12,14 @@ class PosController < InheritedResources::Base
     end
   end
 
+  def return_ticket
+    @tickets = Ticket.all
+    @tickets = @tickets.where(fullname: params[:name]) if params[:name].present?
+    @tickets = @tickets.where(email: params[:email]) if params[:email].present?
+    @tickets = @tickets.where(phone: params[:phone]) if params[:phone].present?
+    @locations = Location.all
+  end
+
   def booking
     @ticket = Ticket.new
     @trip = BusTrip.includes(:location_from, :location_to, :tenant, :bus).find(params[:id])

@@ -50,6 +50,7 @@ $('document').ready(function(){
       centsLimit: 0
     });
     $("#ticket_ticket_sale").val(ticket_sale.join());
+    $('.tickets').text(ticket_sale.join());
   })
 })
 

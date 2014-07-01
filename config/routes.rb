@@ -23,6 +23,7 @@ Mybus::Application.routes.draw do
   resources :buses
   resources :pos do
     get "booking/:id", on: :collection, to: 'pos#booking'
+    get "return", on: :collection, to: 'pos#return_ticket'
   end
   resources :reports
   resources :brands

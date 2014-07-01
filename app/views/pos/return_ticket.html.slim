@@ -39,44 +39,28 @@
           = submit_tag "Tìm kiếm", :name => nil, class: 'btn btn-small btn-success'
 
 .row-fluid
-  - if @show_result
-    h1.title
-      |Vé xe từ
-      span.blue
-        |  #{@from_location.try(:name)}
-      |  đi
-      span.orange
-        |  #{@to_location.try(:name)}
-
-    br/
-    .row-fluid
-      .span12
-        table.table.table-striped.table-bordered.table-hover
-          thead
-            tr
-              th Xe/Tài
-              th Nơi đi
-              th Nơi đến
-              th Giờ đi
-              th Giờ đến
-              th Loại xe
-              th Giá vé
-              th Chỗ trống
-              th Đặt vé
-          tbody
-            - if @bus_trips.blank?
-              .center.alert.alert-danger Chưa có chuyến xe
-            - @bus_trips.each do |trip|
-              - tickets = trip.tickets.present? ? trip.tickets.pluck(:ticket_sale).join(",").split(",").count : 0
-              - if tickets < trip.bus.try(:seats).to_i
-                tr
-                  td= trip.bus.name + " / " + trip.driver.code + " / " + trip.driver.name
-                  td= trip.location_from.name
-                  td= trip.location_to.name
-                  td= trip.started_at
-                  td= trip.started_at + trip.duration.hours
-                  td= trip.bus.try(:seats).to_i
-                  td= number_with_precision(trip.price_ticket, precision: 0, delimiter:',')
-                  td= trip.bus.try(:seats).to_i
-                  td
-                    = link_to 'Đặt Vé',"/pos/booking/#{trip.id}", class: 'btn btn-small btn-success'
+  .span12
+    table.table.table-striped.table-bordered.table-hover
+      thead
+        tr
+          th Họ Tên
+          th Email
+          th Điện thoại
+          th Vị trí ghế
+          th Chuyến xe
+          th Địa điểm đón
+          th
+      tbody
+        - if @tickets.blank?
+          .center.alert.alert-danger Không tìm thấy
+        - @tickets.each do |ticket|
+          tr
+            td= ticket.fullname
+            td= ticket.email
+            td= ticket.phone
+            td= ticket.ticket_sale
+            td= "Đi từ #{ticket.bus_trip.location_from.name} đến #{ticket.bus_trip.location_to.name}"
+            td= ticket.pick_up_at
+            td.center
+              = link_to ticket_path(ticket) do
+                i.icon-save Đổi vé
