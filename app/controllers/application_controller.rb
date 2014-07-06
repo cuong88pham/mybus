@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
     define_method :resource_params do
       return [] if request.get?
       if defined?(resource_request_name)
-        [ params.require(resource_request_name).permit(permitted_params) ]
+        [params.require(resource_request_name).permit(permitted_params)]
       else
-        [ params.require(controller_name.singularize).permit(permitted_params) ]
+        [params.require(controller_name.singularize).permit(permitted_params)]
       end
     end
   end

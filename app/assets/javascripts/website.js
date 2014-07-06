@@ -23,6 +23,8 @@ $('document').ready(function(){
     $(this).prev().focus();
   });
 
+  $('input[data-behaviour*=dp_multichoice]').datepicker({multidate: true,multidateSeparator: ';'});
+
 //     $('.time-picker').timepicker();
 
   $('.chosen-select').chosen({

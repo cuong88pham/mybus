@@ -30,13 +30,13 @@ br/
         = link_to users_path, class: 'btn btn-larger btn-info btn-app radius-4' do
           i.ace-icon.icon-user.bigger-160
           | Nhân viên
-    - if can?(:manager, Driver)
-      .span4.text-center
-        = link_to drivers_path, class: 'btn btn-larger btn-info btn-app radius-4' do
-          i.ace-icon.icon-user.bigger-160
-          | Tài xế
     - if can?(:manager, Station)
       .span4.text-center
         = link_to stations_path, class: 'btn btn-larger btn-info btn-app radius-4' do
           i.ace-icon.icon-user.bigger-160
           | Bến xe
+    - if can?(:manager, Driver)
+      .span4.text-center
+        = link_to drivers_path, class: 'btn btn-larger btn-info btn-app radius-4' do
+          i.ace-icon.icon-gear.bigger-160
+          | Cấu hình

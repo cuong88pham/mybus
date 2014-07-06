@@ -5,13 +5,23 @@ module DefaultJob
   # Author Cuong pham
   def set_admin(params)
     if Storey.schema_exists?(params[:schema])
-      Storey.switch(params[:schema])
+      Apartment::Database.switch(params[:schema])
+      @roles = [{name: 'admin'},
+                {name: 'Giám đốc'},
+                {name: 'Thư ký'},
+                {name: 'Kiểm soát vé'},
+                {name: 'Nhân viên bán vé'},
+                {name: 'Tài xế'},
+                {name: 'Tiếp viên'},
+                {name: 'Thủ Kho'},
+                {name: 'Kế toán'},
+                {name: 'Nhân sự'}]
+      Role.create(@roles)
       user = User.create!(
         username: 'admin',
         email: params[:email], password: '12344321'
       )
-      role = Role.find_by_name('admin')
-      Assignment.create(user_id: user.id, role_id: role.id) unless role.blank?
+
       # Send Mail to user
       # Do it later
     end

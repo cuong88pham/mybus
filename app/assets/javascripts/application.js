@@ -14,16 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require moment
-//= require bootstrap-datetime-picker
 //= require ckeditor-jquery
 //= require_tree .
-$('document').ready(function(){
-    $('.date-picker').datetimepicker();
-
-    $('.chosen-select').chosen({
-      allow_single_deselect: true,
-      no_results_text: 'No results matched',
-
-    })
-
-})

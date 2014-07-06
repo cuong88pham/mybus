@@ -1,6 +1,12 @@
 .page-header.position-relative
   .row-fluid
-    .span10
+    .span8
       h1
         - if title
           = title
+    .span2.text-right
+      = link_to new_user_path,  class: 'btn btn-mini btn-warning' do
+        i.ace-icon.icon-add Thêm nhân viên
+    .span1.text-right
+      = link_to "#",  class: 'btn btn-mini btn-warning' do
+        i.ace-icon.icon-add Thêm vai trò

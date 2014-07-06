@@ -78,8 +78,3 @@ end
 ['Dashboard', 'Report', 'Import', 'SaleTicket'].each do |extra_klass|
   Permission.create(action: 'manage', subject_class: extra_klass) unless (permission = Permission.where(action: 'manage', subject_class: extra_klass).first)
 end
-
-actions.each do |act|
-  Permission.create(action: act, subject_class: 'PaymentTransaction')
-  Permission.create(action: act, subject_class: 'Company')
-end

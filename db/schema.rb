@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701141311) do
+ActiveRecord::Schema.define(version: 20140702163505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,11 @@ ActiveRecord::Schema.define(version: 20140701141311) do
 
   add_index "permissions", ["action"], name: "index_permissions_on_action", using: :btree
 
+  create_table "permissions_roles", id: false, force: true do |t|
+    t.integer "role_id"
+    t.integer "permission_id"
+  end
+
   create_table "pick_ups", force: true do |t|
     t.string   "place"
     t.datetime "created_at"
@@ -195,6 +200,11 @@ ActiveRecord::Schema.define(version: 20140701141311) do
   end
 
   add_index "roles_permissions", ["permission_id", "role_id"], name: "index_roles_permissions_on_permission_id_and_role_id", using: :btree
+
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
 
   create_table "services", force: true do |t|
     t.integer  "tenant_id"

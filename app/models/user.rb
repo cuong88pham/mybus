@@ -4,16 +4,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   STATUS = {
     'active'    => true,
     'deactive'  => false
   }
 
-  has_many :assignments, dependent: :destroy
-  has_many :roles, :through => :assignments
-  has_many :permissions, :through => :roles
-
-  accepts_nested_attributes_for :roles
+  has_and_belongs_to_many :roles
 
   enumerize :status, in: STATUS
 
@@ -25,4 +22,5 @@ class User < ActiveRecord::Base
   def admin?
     self.roles.pluck(:name).include? 'admin'
   end
+
 end

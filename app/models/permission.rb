@@ -1,10 +1,9 @@
 class Permission < ActiveRecord::Base
 
-  has_many :roles_permissions, dependent: :destroy
-  has_many :roles, :through => :roles_permissions
-
   validates :action, presence: true,  uniqueness: {scope: [:subject_class]}
   validates :subject_class, presence: true
+
+  has_and_belongs_to_many :roles
 
   scope :newest,  -> { order('created_at desc') }
   scope :by_subject_class, -> subject_class { where(subject_class: subject_class) }

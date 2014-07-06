@@ -6,13 +6,13 @@ class Ability
     if user.admin?
       can :manage, :all
     else
-      user.permissions.each do |permission|
-        begin
-          can permission.action.to_sym, permission.subject_class.constantize
-        rescue
-          can permission.action.to_sym, permission.subject_class
-        end
-      end
+      # user.permissions.each do |permission|
+      #   begin
+      #     can permission.action.to_sym, permission.subject_class.constantize
+      #   rescue
+      #     can permission.action.to_sym, permission.subject_class
+      #   end
+      # end
     end
   end
 

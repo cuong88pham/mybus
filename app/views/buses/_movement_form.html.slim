@@ -9,7 +9,7 @@
     label.control-label Từ:
     .controls
       = f.select :location_from_id, Location.all.map{|local| [local.name, local.id]},{include_blank: true},:class => 'chosen-select'
-      = f.input :tenant_id, input_html:{value: current_tenant.id}
+      = f.input :tenant_id,as: :hidden, input_html:{value: current_tenant.id}
   .control-group
     label.control-label Bến xe:
     .controls
@@ -30,9 +30,9 @@
       = f.select :driver_id, @drivers.map{|driver| [driver.name, driver.id]}, {include_blank: true},:class => 'chosen-select'
 
   .control-group
-    label.control-label Khởi hàng lúc:
+    label.control-label Khởi hàng ngày:
     .controls
-      = f.text_field :started_at
+      = f.text_field :started_at, data: {behaviour: "dp_multichoice", 'date-format' => 'dd-mm-yyyy'}
 
   .control-group
     label.control-label Thời gian dự kiến:
