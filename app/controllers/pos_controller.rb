@@ -30,7 +30,7 @@ class PosController < InheritedResources::Base
 
   def make_booking
     @ticket = Ticket.create(params.require(:ticket).permit(:tenant_id, :bus_trip_id, :fullname, :phone, :email, :pick_up_at, :status, :ticket_sale))
-    UserMailer.ticket_info(@ticket)
+    UserMailer.ticket_info(@ticket).deliver
   end
 
 end
