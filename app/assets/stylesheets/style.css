@@ -105,7 +105,7 @@ h1 span.share{
   text-transform:capitalize;
 }
 .ticket{
-  background: url(<%=asset-path('chairs.png', image)%>) no-repeat;
+  background: url('chairs.png') no-repeat;
   display: block;
   width: 50px;
   height: 52px;
