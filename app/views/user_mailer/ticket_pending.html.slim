@@ -39,11 +39,11 @@ html
                                         thead style="background:#2e3033;color:#fff;text-align:left"
                                           tr
                                             th colspan="2" width="30%" style="border-bottom-color:#e0e0e0;border-bottom-width:1px;border:none;font-size:13px;font-weight:bold;padding:10px 20px"
-                                              | Thời điểm đặt vé:
+                                              = "Thời điểm đặt vé: #{@ticket['created_at']}"
                                             th colspan="2"  width="30%" style="border-bottom-color:#e0e0e0;border-bottom-width:1px;border:none;font-size:13px;font-weight:bold;padding:10px 20px"
-                                              | Mã vé:
+                                              = "Mã vé: #{@ticket.password}"
                                             th colspan="2"  width="30%" style="border-bottom-color:#e0e0e0;border-bottom-width:1px;border:none;font-size:13px;font-weight:bold;padding:10px 20px"
-                                              | Mã bí mật:
+                                              = "Mã bí mật: #{@ticket.password}"
                                         tbody
                                           tr
                                             td colspan="2" width="30%" Tuyến:
@@ -54,32 +54,32 @@ html
                                             td colspan="5" 12345
                                           tr
                                             td width="15%" Giờ đi
-                                            td width="15%"
+                                            td width="15%"= @ticket.bus_trip.started_at
                                             td width="15%" Giờ đến
-                                            td width="15%"
+                                            td width="15%"= @ticket.bus_trip.started_at + @ticket.bus_trip.duration.send('hour')
                                             td width="15%" Số vé
-                                            td width="15%"
+                                            td width="15%"= @ticket.ticket_sale.split(',').count
                                           tr
                                             td width="15%" Hành khách
-                                            td width="15%"
+                                            td width="15%"= @ticket.fullname
                                             td width="15%" Điện thoại
-                                            td width="15%"
+                                            td width="15%"= @ticket.phone
                                             td width="15%" Vị trí
-                                            td width="15%"
+                                            td width="15%"= @ticket.ticket_sale
                                           tr
                                             td width="15%" Tra cứu
                                             td colspan="5" Nhập Mã vé và Mã bí mật trong mục Tra cứu trên trang MyBus để xem lại thông tin vé hoặc thực hiện thao tác in vé, thanh toán trực tuyến, hủy giữ chỗ.
                                           tr
                                             td width="30%" colspan="2" Thời hạng thanh toán:
-                                            td width="30%" colspan="2" Tổng cộng
-                                            td width="30%" colspan="2" Hãng xe:
+                                            td width="30%" colspan="2"= "Tổng cộng: #{@ticket.ticket_sale.split(',').count * @ticket.bus_trip.price_ticket.to_f}"
+                                            td width="30%" colspan="2"= "Hãng xe: #{@ticket.bus_trip.bus.tenant.name}"
                                       p
-                                        | Vé của Quý khách được giữ chỗ đến
+                                        = "Vé của Quý khách được giữ chỗ đến #{@ticket['created_at'] + 10.minutes}"
                                         b Thời hạn thanh toán
                                         | được ghi chú trên thông tin vé.
                                       p
                                         | Để
-                                        b tăng thời gian giữ chỗ,
+                                        b   tăng thời gian giữ chỗ,
                                         | Quý khách hãy kích hoạt link xác nhận thông tin đặt vé nhận được trong email.
                                       p
                                         | Để mua được vé thành công, Quý khách vui lòng thanh toán theo hình thức phù hợp trước
