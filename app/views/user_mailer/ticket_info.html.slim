@@ -30,72 +30,40 @@ html
                                   tr
                                     td colspan="2" width="100%"
                                       p Chúc mừng quý khách đã giữ chỗ thành công trên MyBus!
-                                      p Vé giữ chỗ của Quý khách có hiệu lực trong 10 phút. Quý khách vui lòng thanh toán trước thời hạn ghi trên vé hoặc nhấn vào đây để gia hạn thời gian giữ chỗ đến 03/04/2014 11:30
-                                      p
-                                        b Nếu Quý khách không thực hiện thanh toán hoặc gia hạn thì vé giữ chỗ của Quý khách sẽ bị hủy tự động. Quý khách có thể liên hệ với chúng tôi qua support@mybus.vn để được hỗ trợ thêm thông tin.
                                   tr
                                     td colspan="2" width="100%"
                                       table style="border-radius:5px;border:1px solid #e0e0e0;margin-bottom:50px;width:100%"
                                         thead style="background:#2e3033;color:#fff;text-align:left"
                                           tr
-                                            th colspan="2" width="30%" style="border-bottom-color:#e0e0e0;border-bottom-width:1px;border:none;font-size:13px;font-weight:bold;padding:10px 20px"
-                                              | Thời điểm đặt vé:
-                                            th colspan="2"  width="30%" style="border-bottom-color:#e0e0e0;border-bottom-width:1px;border:none;font-size:13px;font-weight:bold;padding:10px 20px"
-                                              | Mã vé:
-                                            th colspan="2"  width="30%" style="border-bottom-color:#e0e0e0;border-bottom-width:1px;border:none;font-size:13px;font-weight:bold;padding:10px 20px"
-                                              | Mã bí mật:
+                                            th colspan="3" width="30%" style="border-bottom-color:#e0e0e0;border-bottom-width:1px;border:none;font-size:13px;font-weight:bold;padding:10px 20px"
+                                              = "Thời điểm đặt vé: #{@ticket['created_at']}"
+                                            th colspan="3"  width="30%" style="border-bottom-color:#e0e0e0;border-bottom-width:1px;border:none;font-size:13px;font-weight:bold;padding:10px 20px"
+                                              = "Mã vé: #{@ticket.password}"
                                         tbody
                                           tr
-                                            td colspan="2" width="30%" Tuyến:
-                                            td colspan="2" width="30%" Hồ Chí Minh Quảng Ngãi
-                                            td colspan="2" width="30%" Giữ chỗ
+                                            td colspan="2" width="30%"
+                                              = "Tuyến: #{@ticket.bus_trip.name}"
+                                            td colspan="2" width="30%"
+                                              = "Từ: #{@ticket.bus_trip.location_from.name} - #{@ticket.bus_trip.location_to.name}"
+                                            td colspan="2" width="30%" Đã thanh toán
                                           tr
                                             td width="15%" Biển số xe:
-                                            td colspan="5" 12345
+                                            td colspan="5"
+                                              = @ticket.bus_trip.bus.code
                                           tr
                                             td width="15%" Giờ đi
-                                            td width="15%"
+                                            td width="15%"= @ticket.bus_trip.started_at
                                             td width="15%" Giờ đến
-                                            td width="15%"
+                                            td width="15%"= @ticket.bus_trip.started_at + @ticket.bus_trip.duration.send('hour')
                                             td width="15%" Số vé
-                                            td width="15%"
+                                            td width="15%"= @ticket.ticket_sale.split(',').count
                                           tr
                                             td width="15%" Hành khách
-                                            td width="15%"
+                                            td width="15%"= @ticket.fullname
                                             td width="15%" Điện thoại
-                                            td width="15%"
+                                            td width="15%"= @ticket.phone
                                             td width="15%" Vị trí
-                                            td width="15%"
-                                          tr
-                                            td width="15%" Tra cứu
-                                            td colspan="5" Nhập Mã vé và Mã bí mật trong mục Tra cứu trên trang MyBus để xem lại thông tin vé hoặc thực hiện thao tác in vé, thanh toán trực tuyến, hủy giữ chỗ.
-                                          tr
-                                            td width="30%" colspan="2" Thời hạng thanh toán:
-                                            td width="30%" colspan="2" Tổng cộng
-                                            td width="30%" colspan="2" Hãng xe:
-                                      p
-                                        | Vé của Quý khách được giữ chỗ đến
-                                        b Thời hạn thanh toán
-                                        | được ghi chú trên thông tin vé.
-                                      p
-                                        | Để
-                                        b tăng thời gian giữ chỗ,
-                                        | Quý khách hãy kích hoạt link xác nhận thông tin đặt vé nhận được trong email.
-                                      p
-                                        | Để mua được vé thành công, Quý khách vui lòng thanh toán theo hình thức phù hợp trước
-                                        b Thời hạn thanh toán
-                                        | , sau thời gian này vé giữ chỗ của Quý khách sẽ bị hủy tự động.
-                                      p Quý khách có thể thanh toán qua các hình thức:
-                                      ul
-                                        li Thanh toán trực tuyến tại MyBus qua thẻ ATM ngân hàng. Quý khách có thể tham khảo thêm hướng dẫn phương thức thanh toán trực tuyến tại đây
-                                        li Thanh toán bằng tiền mặt tại văn phòng Công ty TNHH MyBus.
-                                        li Thanh toán bằng tiền mặt tại phòng vé chính thức của Hãng xe.
-                                        li
-                                          |Chuyển khoản ngân hàng với nội dung “THANH TOAN TIEN VE 1XYL99” đến tài khoản
-                                          ul
-                                           li Số tài khoản: 0441003709264
-                                           li Tên tài khoản: Công ty TNHH MyBus
-                                           li Nơi mở tài khoản: Ngân hàng Vietcombank HCM, Chi nhánh – Tân Bình.
+                                            td width="15%"= @ticket.ticket_sale
                                       p Cảm ơn quý khách đã đặt vé trên hệ thống của chúng tôi và kính chúc mọi sự tốt lành!
 
 

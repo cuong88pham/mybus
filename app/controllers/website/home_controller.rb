@@ -57,7 +57,8 @@ class Website::HomeController < ApplicationController
   end
 
   def make_booking
-    Ticket.create(params.require(:ticket).permit(:id, :tenant_id, :bus_trip_id, :fullname, :phone, :email, :password, :promote_code, :pick_up_at, :status, :ticket_sale))
+    @ticket = Ticket.create(params.require(:ticket).permit(:id, :tenant_id, :bus_trip_id, :fullname, :phone, :email, :password, :promote_code, :pick_up_at, :status, :ticket_sale))
+    UserMailer.ticket_pending(@ticket).deliver
   end
 
 end

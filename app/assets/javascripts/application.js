@@ -15,4 +15,9 @@
 //= require bootstrap
 //= require moment
 //= require ckeditor-jquery
+//= require angular
+//= require angular-animate
+//= require angular-resource
+//= require angular-route
+
 //= require_tree .
