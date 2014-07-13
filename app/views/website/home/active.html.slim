@@ -1,0 +1,18 @@
+- title "#{@title}"
+.container
+  .row
+    .span12
+      #main-content
+        .guide_line
+          - if @ticket.present? && @duration <= 10
+            h1.title
+              |Chúc mừng bạn đã kích hoạt giữ chổ thành công tại
+              a href="#{root_path}" title="MyBus"
+                |  MyBus
+            p.text-center= "Thời gian giữ chổ có hiệu lực đến #{@ticket['created_at'] + 12.hour}"
+          - else
+            h1.title
+              |Không tìm thấy vé của bạn hoặc thời gian kích hoặc thời gian kích hoạt đã hết vui lòng liên hệ bộ phận bán vé của
+              a href="#{root_path}" title="MyBus"
+                |  MyBus
+              | để biết thêm chi tiết

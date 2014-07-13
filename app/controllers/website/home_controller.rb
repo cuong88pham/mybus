@@ -57,8 +57,17 @@ class Website::HomeController < ApplicationController
   end
 
   def make_booking
-    @ticket = Ticket.create(params.require(:ticket).permit(:id, :tenant_id, :bus_trip_id, :fullname, :phone, :email, :password, :promote_code, :pick_up_at, :status, :ticket_sale))
+    @ticket = Ticket.create(params.require(:ticket).permit(:id, :tenant_id, :bus_trip_id, :fullname, :phone, :email, :password, :promote_code, :pick_up_at, :status, :ticket_sale, :token))
     UserMailer.ticket_pending(@ticket).deliver
+  end
+
+  def active
+    @title = 'Kích hoạt giữ chỗ'
+    @ticket = Ticket.find_by_token(params[:token])
+    @duration = (Time.zone.now - @ticket['created_at'])/60
+    unless @ticket.blank? && @duration > 10
+      @ticket.update_attributes(status: 'pending')
+    end
   end
 
 end

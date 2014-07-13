@@ -5,6 +5,7 @@ class Ticket < ActiveRecord::Base
 
   validates_presence_of :bus_trip_id, :fullname, :phone, :ticket_sale
   validates_presence_of :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+  before_create :set_token_ticket
 
   STATUS = {
     'pending' => '001',
@@ -33,4 +34,11 @@ class Ticket < ActiveRecord::Base
 
   enumerize :status, in: STATUS
 
+  private
+
+  def set_token_ticket
+    require 'digest/md5'
+    token = self.email + self.bus_trip_id.to_s + self.password + self.ticket_sale + rand(9999* Time.zone.now.to_i).to_s
+    self.token = Digest::MD5.hexdigest(token)
+  end
 end

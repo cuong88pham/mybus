@@ -30,7 +30,10 @@ html
                                   tr
                                     td colspan="2" width="100%"
                                       p Chúc mừng quý khách đã giữ chỗ thành công trên MyBus!
-                                      p Vé giữ chỗ của Quý khách có hiệu lực trong 10 phút. Quý khách vui lòng thanh toán trước thời hạn ghi trên vé hoặc nhấn vào đây để gia hạn thời gian giữ chỗ đến 03/04/2014 11:30
+                                      p
+                                        |Vé giữ chỗ của Quý khách có hiệu lực trong 10 phút. Quý khách vui lòng thanh toán trước thời hạn ghi trên vé hoặc
+                                        a href="#{root_path}/active/#{@ticket['token']}" nhấn vào đây
+                                        | để gia hạn thời gian giữ chỗ đến 03/04/2014 11:30
                                       p
                                         b Nếu Quý khách không thực hiện thanh toán hoặc gia hạn thì vé giữ chỗ của Quý khách sẽ bị hủy tự động. Quý khách có thể liên hệ với chúng tôi qua support@mybus.vn để được hỗ trợ thêm thông tin.
                                   tr

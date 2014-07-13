@@ -77,3 +77,5 @@ group :doc do
   gem 'sdoc', require: false
 end
 gem 'babosa'
+
+gem 'whenever', :require => false
