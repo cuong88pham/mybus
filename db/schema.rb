@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713094120) do
+ActiveRecord::Schema.define(version: 20140715123017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 20140713094120) do
     t.integer  "category_id"
     t.string   "alias"
     t.text     "post_content"
-    t.string   "post_desc"
+    t.text     "post_desc"
     t.text     "meta_desc"
     t.text     "meta_key"
     t.boolean  "show_in_home_page", default: false
